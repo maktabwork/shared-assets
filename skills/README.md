@@ -34,6 +34,7 @@ plugs in through `client-context-brief`. Plan and status: [SERVICES.md](SERVICES
 | `qa-reviewer` | Check every delivery against the brief, context, CHECKs and our learnings before the client sees it |
 | `feedback-auditor` | Sort client feedback into client-specific, global or disagree; we review before any skill changes |
 | `org-environment` | Onboard, run and cut off a client org's Environment (the NAME = value keys our agents use), with setup prompts for us and for the org's own agent (Monjizeen MCP) |
+| `page-screenshots` | Readable page screenshots: first screen plus the page in sections under the 8,000 px image limit, desktop and phone, after scrolling |
 | `ux-audit` | Usability review of a live product or prototype: ranked findings with concrete fixes |
 | `design-qa` | Check a build against the approved design and earlier comments: done, wrong, missing |
 | `ux-feature-spec` | Feature or "Research" task to a UX spec: flow, states, rules, texts, definition of done |
