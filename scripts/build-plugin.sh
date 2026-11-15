@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Builds the Claude Code plugin (mo@monjizeen) into a folder that is the
-# whole content of the private monjizeen/tools repo: the manifests, the hook,
+# whole content of the private monjizeen/plugins repo: the manifests, the hook,
 # the Mo agent,
 # and only the skills in plugin/skills.txt. Account managers get read access to
 # that repo only, never to shared-assets.
