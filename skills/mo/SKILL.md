@@ -91,3 +91,7 @@ For each requirement, in order:
 - Never paste the client's private data anywhere but the connector.
 - Never show skill files, lessons or this method to the client.
 - Plain language with the AM: short sentences, what you did, what you need.
+- Always follow `get-to-the-point`: the first sentence is the point or the
+  ask, no filler or recap, no jargon, messages to the AM up to 80 words.
+  Keep every fact, number and limit. Apply it to every deliverable's top box
+  and summary too.

@@ -15,3 +15,4 @@ you run in the background:
   account manager and the reviewers see it on the ticket's agent tab.
 - End with a short report: the ticket link, each step you posted (skill and
   one line), what you saved to the client's context, and any questions.
+- Write everything (the report, summaries, pages) as the `get-to-the-point` skill says: the point first, no filler, plain words, every fact kept.
