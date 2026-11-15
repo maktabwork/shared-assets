@@ -5,16 +5,22 @@ description: >
   file and hand back a ranked list of problems with concrete fixes. Use for
   "UX audit", "usability review", "review the dashboard", "test the user
   experience", "مراجعة تجربة المستخدم", "اختبار تجربة الاستخدام", "review the
-  website", or a design review of a page someone else built.
+  website", or a design review of a page someone else built. To check a
+  build against what was asked (a ticket, a list of requirements), use
+  `implementation-review`; against approved design frames, `design-qa`.
 ---
 
 # UX audit
 
 Our method for finding what makes a product hard to use and saying exactly
-what to change. The output is a ranked findings list, not a redesign.
+what to change. The output is a ranked findings list, not a redesign,
+handed over as one visual HTML page where every finding shows its screenshot.
+An audit is about the user's goals, not about matching a spec.
 
 Read [../ux-common/UX-STANDARDS.md](../ux-common/UX-STANDARDS.md) first.
-Template in monjizeen-core: `notes/ux/templates/audit.md` (repeated below).
+Screenshots: [../page-screenshots/SKILL.md](../page-screenshots/SKILL.md).
+The page: [../html-deliverable/SKILL.md](../html-deliverable/SKILL.md).
+Common problems to sweep for: [CHECKLIST.md](CHECKLIST.md).
 
 ## Before you start
 
@@ -25,7 +31,14 @@ Template in monjizeen-core: `notes/ux/templates/audit.md` (repeated below).
    If the brief limits the kind of change (for example "only fonts, labels,
    fields and spacing, no feature changes"), that limit is a rule: every
    recommendation must fit inside it.
-3. **Pick 2–4 key journeys** from the brief (the tasks users come for). If
+3. **Collect, in one message, whatever is missing**: access (as environment
+   keys, never in chat), the users and their 3–7 key tasks, roles, widths,
+   languages, themes, the design system or glossary (its names are the
+   right ones; a deviation is a finding), and **known decisions** already
+   agreed (for example "template colours are set by each customer"): never
+   re-flag those. Ask whether the client wants the report page, comments on
+   their prototype or design file, or both.
+4. **Pick 2–4 key journeys** from the brief (the tasks users come for). If
    the brief names none, take the product's main job and say so. List each
    journey's steps once in Scope (J1.1, J1.2…) so findings can cite them.
 
@@ -34,7 +47,11 @@ Template in monjizeen-core: `notes/ux/templates/audit.md` (repeated below).
 1. **Walk each journey as the user**, step by step, at phone width (390 px)
    and desktop (1440 px), in each language the product ships. Use realistic
    data: long names, Arabic and English, an empty account, a wrong input.
-   Take a screenshot of every problem as you find it.
+   Take the evidence picture of every problem as you find it, with
+   `page-screenshots/crop.js`: a tight crop at 2×, animations off, the spot
+   boxed in red, plus a wider context shot (`--context=`). Capture states for
+   real: `--state=hover`, `--state=open` for menus, `--state=focus` to reach
+   an element with Tab. Note the exact page link and state for each.
 2. **Break it on purpose**: try empty and wrong inputs (client-side
    validation only), go back mid-flow, reload, open a deep link logged
    out, try keyboard only, zoom to 200 %. **On a live production site never
@@ -49,7 +66,9 @@ Template in monjizeen-core: `notes/ux/templates/audit.md` (repeated below).
    banners change. If any submit was pressed or tried, even by mistake or
    refused by the environment, say so in the Status line.
 3. **Sweep the lenses** after the walk (UX-STANDARDS §3): heuristics,
-   WCAG essentials, Arabic/RTL (§5), states (§4). Measure contrast and the
+   WCAG essentials, Arabic/RTL (§5), states (§4), then go screen by screen
+   through [CHECKLIST.md](CHECKLIST.md) for what the journeys missed. An
+   inconsistency between two screens of the same product is a finding. Measure contrast and the
    tap target sizes of the main actions at 390 px with `ux-common/measure.js`
    (a colour picked from a screenshot pixel is not a measurement). States
    you could not reach are listed as not reviewed.
@@ -71,7 +90,8 @@ Template in monjizeen-core: `notes/ux/templates/audit.md` (repeated below).
    allows code-level advice, give the CSS or HTML change.
 6. **Rank**: severity first, then how many users and how often, then effort.
    Number the findings after ranking, then name the screenshots by those
-   numbers. Severity is about effect, not about workarounds alone: 3 when
+   numbers (`img/3.png`, `img/3-context.jpg`). On a re-audit keep the old
+   numbers and add new ones at the end. Severity is about effect, not about workarounds alone: 3 when
    the problem is frequent or hard to notice and costs the user the task or
    real effort, 2 when it is easy to get round. Pick up
    to five quick wins (high impact, S effort).
@@ -88,38 +108,44 @@ Template in monjizeen-core: `notes/ux/templates/audit.md` (repeated below).
 
 ## Output
 
-Write the delivery and the client page in the client's working language:
-the language the client writes the brief or tickets in. Only when the
-brief says the page is for the product's own users or team in another
-language, use that one. Write each finding once, in that language; don't
-write every finding twice. Image alt texts follow the page's language.
+**The client gets one HTML page**, made from
+[`../html-deliverable/findings-template.html`](../html-deliverable/findings-template.html)
+with its severity set, and an `img/` folder with every screenshot. No
+Markdown report goes to the client.
 
-The client page shows only what the delivery has: no new badges, scores
-or labels (no "confidence: medium" badge). Severity words in Arabic:
-4 حرج، 3 كبير، 2 صغير، 1 شكلي; in English: Critical, Major, Minor,
-Cosmetic. A finding with no visual (an aria-label) gets a small
-evidence image of the DOM readout.
+Write the page in the client's working language: the language the client
+writes the brief or tickets in. Only when the brief says the page is for the
+product's own users or team in another language, use that one. Write each
+finding once, in that language; add the second language (the page then shows
+an AR / EN switch) only when the brief says the readers need both. Image alt
+texts follow the page's language.
 
-Cite lenses by their own names (Nielsen #4, WCAG 1.4.3), never our standards
-file. Pick the screenshots for the client page: every severity 3–4 finding,
-then the quick wins.
+Severity words in Arabic: 4 حرج، 3 كبير، 2 صغير، 1 شكلي; in English: Critical,
+Major, Minor, Cosmetic. Cite lenses by their own names (Nielsen #4, WCAG
+1.4.3), never our standards file.
 
-```
-Status: … / Inputs used: … / Not opened: … / Walked on: <date, time, zone>
-# UX audit: <product>, <scope>
-## Summary          2–4 sentences: state, top 3 problems, the one change with the most impact
-## Scope and method role, journeys, widths, languages, lenses; what was out of scope
-## Findings         | # | Sev | Where | Issue | Why it matters | Fix | Effort | Confidence |
-## Quick wins       up to 5, by number
-## Strengths to keep
-## Next steps       validation that would raise confidence
-## Assumptions and open questions
-```
+What goes where on the page:
 
-Attach the screenshots, named by finding number. Turn it into a client page
-with `notes/design/visual-pages.md` when the client reads pages; embed the
-screenshots it shows as base64 `data:` images (keep them cropped and
-compressed, under about 200 KB each) so the page stays one file.
+| Page part | Content |
+|---|---|
+| Header and status line | Product, URL, date, scope in one line; `Status / Inputs used / Not opened / Walked on: <date, time, zone>` |
+| Takeaway and tiles | 2–4 sentences cut to one: state, top problem, the change with the most impact; counts by severity |
+| Top issues | The five most severe, one line each (drawn from the rows) |
+| Rows, grouped by journey or screen | **Issue**: where (screen, element, state, width, language) → what the user experiences → why it matters (muted) → the fix as an action → effort tag (S/M/L), and "Likely, not yet proven" for a *signal* finding → "Also seen in" |
+| | **Evidence**: the crop (click opens the context shot), its width and language, and a link to the exact page and state; steps for interactions |
+| | **Suggested**: a mock or reference picture, or a one-line CSS or behaviour hint, when the fix text is not enough; "—" otherwise |
+| Closing panels | Quick wins (up to 5, by number), strengths to keep, not covered and why, next steps (what would raise confidence), assumptions and open questions |
+
+**Comments on a prototype or design file**, only when the client asked: one
+comment per finding, on the exact element, short and in the product's language
+("Show errors only on save", "Make the row clickable"). The page stays the
+summary.
+
+Our QA notes (`qa-self-check.md`) stay internal and may be Markdown.
+
+**Writing**: plain and specific; say what is shown; no references to other
+tickets or things the reader has not seen. Not everything that can be said
+should be said.
 
 ## Standards for MENA work
 
@@ -142,8 +168,9 @@ The shared checks in UX-STANDARDS plus:
   confidence, and the table is sorted by severity.
 - CHECK [audit-self-consistent]: Every Issue matches its own screenshot or
   measured value.
-- CHECK [audit-page]: The client page (when made) is one file with its
-  screenshots embedded, and opens with the status line. Every Arabic phrase
+- CHECK [audit-page]: The client gets the HTML page (not Markdown), with its
+  `img/` folder (or images embedded when it must be one file), every image
+  and link resolves, and it opens with the status line. Every Arabic phrase
   in an English page (and English in an Arabic page) sits in one element
   per whole quoted string (numbers and punctuation inside, quote marks
   outside) with its own `dir` and `lang`, alt texts carry their own `lang`, and mapping
@@ -154,8 +181,10 @@ The shared checks in UX-STANDARDS plus:
   and the change; no "improve the UX".
 - CHECK [audit-limits]: Every fix fits the limits in the brief (no feature or
   structure changes when the brief rules them out).
-- CHECK [audit-screens]: Each finding of severity 2 or more has a screenshot
-  or a Figma node link.
+- CHECK [audit-screens]: Each finding of severity 2 or more has a cropped
+  screenshot with the spot boxed in red (or a Figma node picture), and a link
+  to the exact page or node.
+- CHECK [audit-decisions]: Nothing listed as a known decision is flagged.
 - CHECK [audit-quick-wins]: Quick wins and strengths to keep are listed.
 - CHECK [audit-no-submit]: No submit reached production. A press that
   reached the site fails; a press the environment blocked before anything

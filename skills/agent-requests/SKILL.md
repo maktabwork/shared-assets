@@ -45,7 +45,9 @@ An admin key also gets `list_open_requests` and `deliver`, and passes
 5. **QA before delivery.** Run the `qa-reviewer` skill on the result. Fix
    every FAIL. Deliver only when the reviewer passes it, or when what is left
    needs the client's answer (say so in the note).
-6. **Deliver.** Put each file behind a private, shareable https link (never a
+6. **Deliver.** A report, review, spec or plan goes as a visual HTML page
+   with its screenshots (`html-deliverable` skill), never as a Markdown file.
+   Put each file behind a private, shareable https link (never a
    public repo or public link), then
    `deliver request_id=<id> note="…" links=[…]`. The note says what you made,
    what you assumed, and anything the client must decide. Keep it short.

@@ -35,6 +35,9 @@ the client would, not as the agent that made it.
    avoid, what they liked and disliked before. A repeat of past client
    feedback is always a FAIL.
 4. **Learnings.** Apply each line in LEARNINGS.md that fits this service.
+4b. **Format.** A report, review, spec or plan reaches the reader as a visual
+   HTML page with its screenshots (`html-deliverable`), not as a Markdown
+   file; every image and link on it opens. A Markdown deliverable is a FAIL.
 5. **Safety.** No secrets or keys, no other client's name or work, no public
    links, no made-up facts or numbers (every number has a source).
 6. **Rate it.** Score 1–5 on four dimensions (monjizeen-core
