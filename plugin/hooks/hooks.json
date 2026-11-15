@@ -2,7 +2,7 @@
   "hooks": {
     "PreToolUse": [
       {
-        "matcher": "mcp__plugin_monjizeen_monjizeen__finish_work",
+        "matcher": "mcp__plugin_mo_monjizeen__finish_work",
         "hooks": [
           {
             "type": "command",

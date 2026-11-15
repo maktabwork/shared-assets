@@ -1,4 +1,4 @@
-# Publishes the Claude Code plugin (monjizeen@tools) to the private
+# Publishes the Claude Code plugin (mo@monjizeen) to the private
 # monjizeen/tools repo whenever its parts change on main. Account managers read
 # only that repo. Needs the secret TOOLS_REPO_TOKEN: a fine-grained token with
 # Contents read and write on monjizeen/tools only.

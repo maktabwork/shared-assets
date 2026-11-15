@@ -80,4 +80,4 @@ finish the current step first, then start a new one.
 - One key per client. If a tool says "No such ticket for this key" or "Use a
   key made for one client", the plugin holds another client's key, or a key not
   limited to one client: stop and ask the account manager to switch it with
-  `/plugin configure monjizeen@tools`.
+  `/plugin configure mo@monjizeen`.

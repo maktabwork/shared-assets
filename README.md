@@ -115,7 +115,7 @@ Sync from monjizeen: `cd asaas/packages/design-system && npm run sync`
 
 ## Claude Code plugin
 
-The plugin for account managers and reviewers (`monjizeen@tools`: client-work
+The plugin for account managers and reviewers (`mo@monjizeen`: client-work
 skills plus the Monjizeen connector) is built from `plugin/` and the skills in
 `plugin/skills.txt` by `scripts/build-plugin.sh`, and published to the private
 repo `monjizeen/tools` by `.github/workflows/publish-plugin.yml`. Account

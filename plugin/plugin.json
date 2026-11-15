@@ -1,8 +1,10 @@
 {
-  "name": "monjizeen",
+  "name": "mo",
   "version": "0.1.0",
-  "description": "Monjizeen skills plus the Monjizeen connector. Work on a ticket in Claude Code; the work, deliverable, time and tokens post to the ticket for review.",
-  "author": { "name": "Monjizeen" },
+  "description": "Mo: Monjizeen's skills plus the Monjizeen connector. Work on a ticket in Claude Code; the work, deliverable, time and tokens post to the ticket for review.",
+  "author": {
+    "name": "Monjizeen"
+  },
   "userConfig": {
     "api_key": {
       "type": "string",
