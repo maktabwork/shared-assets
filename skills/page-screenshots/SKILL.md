@@ -4,9 +4,11 @@ description: >
   Take screenshots of a web page that any reviewer or model can read: the
   first screen and the whole page in sections, at desktop (1440 px) and phone
   (390 px) width, after scrolling so lazy images and animated counters load.
-  Use whenever another skill needs page screenshots (ux-audit, design-qa,
-  ui-screen-design, qa-reviewer), or for "screenshot the page", "full-page
-  screenshot", "لقطة شاشة للصفحة".
+  Also takes the evidence crop for one finding: the element boxed in red at
+  2×, with a wider context shot. Use whenever any skill needs page
+  screenshots (ux-audit, implementation-review, design-qa, ui-screen-design,
+  qa-reviewer), or for "screenshot the page", "full-page screenshot",
+  "screenshot this issue", "لقطة شاشة للصفحة".
 ---
 
 # Page screenshots
@@ -28,8 +30,9 @@ The other skills say *what* to look at; this one says *how* to capture it.
 1. **Use the script** when you have a shell:
    `node page-screenshots/capture.js <url> [outDir] [--widths=1440,390] [--lang=ar] [--max=12]`
    It needs Playwright (`npm i -D playwright` or a global install). It prints
-   a list of the files it wrote. Inside Maher, `open_page` does the same with
-   `full_page: true` (and `part: 2, 3…` for the rest of a long page).
+   a list of the files it wrote. An agent whose browser tool can capture a
+   full page in parts (for example `open_page` with `full_page: true`, then
+   `part: 2, 3…`) follows the same rules.
 2. **Both widths, every time**: 1440 px (desktop) and 390 px (phone), in each
    language the page ships. A phone screenshot is not a narrow desktop one:
    the script turns on touch and the phone viewport.
@@ -48,9 +51,16 @@ The other skills say *what* to look at; this one says *how* to capture it.
 6. **Very long pages.** The script stops after 12 sections per width (about
    19,000 px) and says how much is left. Capture the rest only if the task
    needs it (pass `--max`), and say which part you did not see.
-7. **To show one problem**, crop to the element (Playwright
-   `locator.screenshot()`) instead of sending a whole section. Crops go next
-   to the finding they prove.
+7. **To show one problem**, use the crop script instead of sending a whole
+   section:
+   `node page-screenshots/crop.js <url> "<css selector>" img/3.png --context=img/3-context.jpg [--width=390] [--lang=ar] [--scheme=dark] [--state=hover|focus|open]`
+   It turns animations off, captures at 2×, boxes the element in red with
+   some room around it, and saves the wider shot of the same screen that the
+   crop opens to in a report. `--state=focus` reaches the element with Tab so
+   the real focus ring shows (if Tab never reaches it, that is a finding);
+   `--state=open` clicks it to open a menu, never a submit, save, send or pay
+   button. Name crops by finding number; they go next to the finding they
+   prove.
 
 ## Rules
 
@@ -69,5 +79,7 @@ The other skills say *what* to look at; this one says *how* to capture it.
   one was skipped is stated).
 - CHECK [shots-loaded]: The page was scrolled before capture, and anything
   blank or zero is reported as "may not have loaded", not as a fact.
+- CHECK [shots-crop]: Every finding's picture is a tight crop with the spot
+  boxed, at 2×, with its wider context shot.
 - CHECK [shots-coverage]: The report says which part of the page was not
   captured, if any.

@@ -193,13 +193,15 @@ Most generic UX advice forgets these. They apply to every UX skill.
 
 ## 7. Ways to deliver
 
-Pick by what the client works in; say which you picked.
+Pick by what the client works in; say which you picked. **A deliverable a
+person reads is a visual HTML page, never a Markdown file** (see
+`../html-deliverable/SKILL.md`). Markdown is only for our internal notes.
 
 | Deliverable | Route |
 |---|---|
 | Figma frames | Figma MCP (`use_figma`, after loading the `figma-use` skill) in the client's file and with their library. Never edit a client's master file: work in a copy or a new page and say where. |
 | Clickable or hi-fi screens without Figma | One HTML file per screen set, real text, CSS variables for the client's tokens, rendered with Playwright to PNG at 390 and 1440 px. |
-| A review, spec or plan | Markdown that follows the skill's template, and a client page made with `notes/design/visual-pages.md` when the client reads pages. The page may embed the cropped screenshots it needs as base64 `data:` images (under ~200 KB each) and stays one file. |
+| A review, spec or plan | One HTML page made with the `html-deliverable` skill (findings use its `findings-template.html`), holding what the skill's template lists, with its screenshots in an `img/` folder next to it (or embedded as `data:` images, under ~200 KB each, when it must travel as one file). |
 | Comments on a Figma file or ticket | Only where the client asked for comments there; never post publicly. |
 
 Screenshots in a delivery are cropped to the element they prove and named

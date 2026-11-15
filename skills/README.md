@@ -25,6 +25,10 @@ All custom skills live here — versioned on GitHub. **Do not edit copies** unde
 Our methods and standards for each service Monjizeen sells. Client context
 plugs in through `client-context-brief`. Plan and status: [SERVICES.md](SERVICES.md).
 
+**Rule for every service skill:** what a client or owner reads is a visual
+HTML page with its screenshots, made with `html-deliverable`, never a
+Markdown file. Markdown stays for our own notes.
+
 | Skill | Purpose |
 |-------|---------|
 | `understand-requirements` | First step on a ticket: say back what will be built in short bullets, split into requirements delivered one at a time, with the skill for each (Maher) |
@@ -34,9 +38,11 @@ plugs in through `client-context-brief`. Plan and status: [SERVICES.md](SERVICES
 | `qa-reviewer` | Check every delivery against the brief, context, CHECKs and our learnings before the client sees it |
 | `feedback-auditor` | Sort client feedback into client-specific, global or disagree; we review before any skill changes |
 | `org-environment` | Onboard, run and cut off a client org's Environment (the NAME = value keys our agents use), with setup prompts for us and for the org's own agent (Monjizeen MCP) |
-| `page-screenshots` | Readable page screenshots: first screen plus the page in sections under the 8,000 px image limit, desktop and phone, after scrolling |
-| `ux-audit` | Usability review of a live product or prototype: ranked findings with concrete fixes |
-| `design-qa` | Check a build against the approved design and earlier comments: done, wrong, missing |
+| `html-deliverable` | Hand any deliverable over as one visual HTML page; findings template with screenshots, filter chips and an AR / EN switch |
+| `page-screenshots` | Readable page screenshots: first screen plus the page in sections under the 8,000 px image limit, desktop and phone, after scrolling; red-boxed evidence crops |
+| `ux-audit` | Usability review of a live product or prototype: ranked findings, each with its screenshot and a concrete fix |
+| `implementation-review` | Check a build against what was asked (ticket, requirements, earlier comments): done, partly, wrong, missing, not asked for |
+| `design-qa` | Check a build against the approved design frames and design comments: done, wrong, missing |
 | `ux-feature-spec` | Feature or "Research" task to a UX spec: flow, states, rules, texts, definition of done |
 | `ui-screen-design` | Screens and dashboards in Figma or hi-fi HTML, every state, both languages |
 | `design-system-pattern` | One design-system component, pattern or template: usage rules and decision table |

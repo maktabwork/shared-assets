@@ -2,11 +2,11 @@
 name: design-qa
 description: >
   Check what developers built against the approved design, the design system
-  and the review comments given earlier, and report what matches, what is
-  wrong and what is still missing. Use for "review the implementation",
-  "design QA", "check the developers' fixes", "مراجعة التنفيذ", "مراجعة
-  التعليقات المنفذة", "مراجعة تحسينات المطورين", "review the new version of
-  the app".
+  and the design comments given earlier, and report what matches, what is
+  wrong and what is still missing. Use for "design QA", "does the build match
+  the design", "compare with Figma", "مطابقة التصميم", "review the new
+  version of the app against the design". To check a build against a ticket
+  or a list of requests, use `implementation-review`.
 ---
 
 # Design QA
@@ -17,6 +17,8 @@ done. It is not a fresh UX audit; new usability ideas go in a short separate
 list at the end.
 
 Read [../ux-common/UX-STANDARDS.md](../ux-common/UX-STANDARDS.md) first.
+Screenshots: [../page-screenshots/SKILL.md](../page-screenshots/SKILL.md).
+The page: [../html-deliverable/SKILL.md](../html-deliverable/SKILL.md).
 
 ## Inputs (list any you cannot open, all at once)
 
@@ -76,6 +78,13 @@ Read [../ux-common/UX-STANDARDS.md](../ux-common/UX-STANDARDS.md) first.
 
 ## Output
 
+The client gets **one HTML page** from
+[`../html-deliverable/findings-template.html`](../html-deliverable/findings-template.html)
+with an `img/` folder: one row per check-list row, the build crop as Evidence
+and the design reference (Figma node picture) as Suggested. Use the status set
+(Done, Wrong, Missing, Changed on purpose?, Can't check: rename the template's
+`partly` to `changed`). The outline below is what the page holds, in order.
+
 ```
 Status: … / Inputs used: … / Not opened: …
 # Design QA: <product>, round <n>, <date>
@@ -89,8 +98,8 @@ Status: … / Inputs used: … / Not opened: …
 ## Assumptions
 ```
 
-Count the rows by status after writing the tables, and copy those counts into
-the summary last.
+Count the rows by status after writing the tables; the page's tiles and
+chips count them from the rows.
 
 When the client works in Figma comments or tickets, post one comment per
 Wrong or Missing row in that place (only where the client asked) and keep the

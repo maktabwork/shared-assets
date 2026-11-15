@@ -1,0 +1,196 @@
+<!doctype html>
+<!--
+  Findings report template: one page for any list of findings with evidence
+  (UX audit, implementation review, design QA). Copy it next to an img/ folder,
+  fill PAGE, KINDS and ROWS below, open it in a browser, and check every image
+  loads. Write the text in one language; add a second language only when the
+  brief says the readers need both (the switch then shows by itself).
+  Columns: # · Issue · Evidence · Suggested.
+-->
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Findings report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7f8;--card:#fff;--ink:#1c2326;--muted:#5a666b;--rule:#dde2e4;--link:#2457d6;--accent:#2457d6;
+  --red:#a3201a;--orange:#b93d0a;--amber:#8a5a00;--blue:#3a5fb0;--grey:#56656a;--green:#0f7a55;--violet:#6b46b8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#13181a;--card:#1b2225;--ink:#e7ecee;--muted:#9fabaf;--rule:#2d373a;--link:#7aa2ff;--accent:#7aa2ff;
+  --red:#ff7b72;--orange:#ff9a5c;--amber:#e3b341;--blue:#8fb0f0;--grey:#a3b1b5;--green:#4cc38a;--violet:#b9a2f0;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#13181a;--card:#1b2225;--ink:#e7ecee;--muted:#9fabaf;--rule:#2d373a;--link:#7aa2ff;--accent:#7aa2ff;
+  --red:#ff7b72;--orange:#ff9a5c;--amber:#e3b341;--blue:#8fb0f0;--grey:#a3b1b5;--green:#4cc38a;--violet:#b9a2f0;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+[lang="ar"],:root[lang="ar"] body{font-family:"Noto Sans Arabic","Noto Naskh Arabic","Geeza Pro","Segoe UI",system-ui,sans-serif}
+.wrap{padding:24px 16px 64px;display:flex;flex-direction:column;gap:18px;max-width:1500px;margin:0 auto}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:start}
+.brand{font-size:13px;font-weight:700;letter-spacing:.02em;color:var(--accent);margin:0 0 4px}
+h1{margin:0;font-size:28px;line-height:1.25}
+.meta{color:var(--muted);font-size:13px;margin:4px 0 0}
+.status{font-size:13px;color:var(--muted);border-inline-start:3px solid var(--accent);padding-inline-start:10px}
+.status b{color:var(--ink)}
+.lang{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:2px;background:var(--card)}
+.lang button{font:600 13px inherit;border:0;background:none;color:var(--muted);padding:4px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--card)}
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.tile{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px}
+.tile .n{font-size:28px;font-weight:700;line-height:1.1;color:var(--c,var(--ink))}
+.tile .l{font-size:13px;color:var(--muted)}
+.takeaway{font-size:17px;font-weight:500;margin:0}
+.counts{display:flex;flex-wrap:wrap;gap:8px}
+.counts button{font:600 13px inherit;padding:6px 12px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink);cursor:pointer}
+.counts button[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.counts button.chip{background:color-mix(in srgb,var(--c) 10%,var(--card));color:var(--c);border-color:color-mix(in srgb,var(--c) 35%,var(--card))}
+.counts button.chip[aria-pressed="true"]{background:var(--c);color:var(--card);border-color:var(--c)}
+button:focus{outline:none}button:focus-visible,a:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.box{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px;font-size:14px}
+.box h2{font-size:14px;margin:0 0 6px;color:var(--muted)}
+.box ol,.box ul{margin:0;padding-inline-start:20px}
+.panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.tbl{background:var(--card);border:1px solid var(--rule);border-radius:10px}
+table{border-collapse:collapse;width:100%;table-layout:fixed}
+col.c-n{width:48px}col.c-shot{width:230px}
+th,td{padding:10px;border-bottom:1px solid var(--rule);vertical-align:top;text-align:start;font-size:13.5px}
+th{font-size:12px;color:var(--muted);font-weight:600;position:sticky;top:0;z-index:2;background:var(--card);box-shadow:0 1px 0 var(--rule)}
+tr.sec td{background:var(--bg);font-weight:600;font-size:13px;color:var(--muted);padding:6px 10px}
+tr[data-k] td:first-child{border-inline-start:4px solid var(--c)}
+.kind{display:block;font-size:11.5px;font-weight:600;color:var(--c);margin-top:2px}
+.where{color:var(--muted);font-size:12.5px}
+.issue{font-size:14.5px;font-weight:500}
+.why{color:var(--muted);font-size:13px;margin-top:2px}
+.fix{margin-top:6px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-size:11.5px;color:var(--muted);border:1px solid var(--rule);border-radius:999px;padding:0 8px}
+.also,.hist{color:var(--muted);font-size:12.5px;margin-top:4px}
+.shot{display:block;width:100%;max-width:210px;border:1px solid var(--rule);border-radius:6px;cursor:zoom-in;margin-bottom:4px;background:var(--bg)}
+.shot img{width:100%;display:block;border-radius:6px}
+.cap{color:var(--muted);font-size:12px}
+a{color:var(--link)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:900px){table,thead,tbody,tr,td{display:block}thead{display:none}tr{border-bottom:1px solid var(--rule);padding:8px 0}
+  td{border:0;padding:4px 12px}tr[data-k] td:first-child{border-inline-start:0}tr[data-k]{border-inline-start:4px solid var(--c)}
+  td[data-h]::before{content:attr(data-h);display:block;font-size:11.5px;color:var(--muted);font-weight:600}col{display:none}.shot{max-width:100%}td.empty{display:none}}
+dialog{border:0;padding:0;background:transparent;max-width:95vw}
+dialog img{max-width:95vw;max-height:90vh;display:block;border-radius:8px}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div><p class="brand">Monjizeen</p><h1 id="title"></h1><p class="meta" id="meta"></p></div>
+    <div class="lang" role="group" aria-label="Language / اللغة" hidden></div></div>
+  <p class="status" id="status"></p>
+  <p class="takeaway" id="takeaway"></p>
+  <div class="hero" id="hero"></div>
+  <div class="box" id="topbox"><h2 id="h-top"></h2><ol id="top"></ol></div>
+  <div class="counts" id="counts" role="group"></div>
+  <div class="tbl"><table>
+    <colgroup><col class="c-n"><col><col class="c-shot"><col class="c-shot"></colgroup>
+    <thead><tr><th>#</th><th id="h-issue"></th><th id="h-ev"></th><th id="h-sug"></th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table></div>
+  <div class="panels" id="panels"></div>
+</div>
+<dialog id="lb"><img alt=""></dialog>
+<script>
+// =================== fill these ===================
+// Languages the page offers, first = default. One language is the norm.
+const LANGS=["en"];            // e.g. ["ar","en"] when the readers need both
+// Header, status line, takeaway, closing panels. Every text is {en:"…"} (add ar:"…" for a second language).
+const PAGE={
+  title:{en:"UX audit: <product>, <scope>"},
+  meta:{en:"<URL> · <YYYY-MM-DD> · by <name>"},
+  status:{en:"<b>Ready for review</b> · Inputs used: <list> · Not opened: <list> · Walked on: <date, time, zone>"},
+  takeaway:{en:"<the one-sentence state of things, and the change with the most impact>"},
+  // Closing panels, in order. Leave items empty to drop a panel.
+  panels:[
+    {title:{en:"Quick wins"},items:[{en:"#1 …"}]},
+    {title:{en:"Strengths to keep"},items:[{en:"…"}]},
+    {title:{en:"Not covered, and why"},items:[{en:"…"}]},
+    {title:{en:"Next steps"},items:[{en:"…"}]},
+    {title:{en:"Assumptions and open questions"},items:[{en:"…"}]},
+  ],
+};
+// The categories rows can have, in rank order. A UX audit uses severity; an
+// implementation review uses status. Pick one set; delete the other.
+// top:true = counts toward the "top issues" list; tile:true = shown as a stat tile.
+const KINDS={
+  critical:{c:"--red",   top:true, tile:true, en:"Critical", ar:"حرج"},
+  major:   {c:"--orange",top:true, tile:true, en:"Major",    ar:"كبير"},
+  minor:   {c:"--amber", top:true, tile:true, en:"Minor",    ar:"صغير"},
+  cosmetic:{c:"--grey",  top:true, tile:false,en:"Cosmetic", ar:"شكلي"},
+  fixed:   {c:"--green", top:false,tile:false,en:"Fixed",    ar:"تم الإصلاح"},
+};
+/* Implementation review set:
+const KINDS={
+  missing: {c:"--red",   top:true, tile:true, en:"Missing",       ar:"لم يُنفَّذ"},
+  wrong:   {c:"--orange",top:true, tile:true, en:"Wrong",         ar:"خطأ"},
+  partly:  {c:"--amber", top:true, tile:true, en:"Partly done",   ar:"منفذ جزئيًا"},
+  extra:   {c:"--violet",top:false,tile:false,en:"Not asked for", ar:"غير مطلوب"},
+  cant:    {c:"--grey",  top:false,tile:false,en:"Can't check",   ar:"تعذّر التحقق"},
+  done:    {c:"--green", top:false,tile:true, en:"Done",          ar:"منفذ"},
+};
+*/
+// One object per finding, already ranked. group = journey/screen (or requirement group).
+// ev / sug = image paths next to this page (img/1.png); ctx = the wider shot the crop opens to.
+// tags = short muted labels such as effort ("Effort S") or "Likely, not yet proven".
+const ROWS=[
+  {n:1,k:"major",group:{en:"<journey or screen>"},
+   where:{en:"<screen, element, state, width, language>"},
+   issue:{en:"<what the user experiences>"},
+   why:{en:"<why it matters: the user's goal, a heuristic or a WCAG criterion>"},
+   fix:{en:"<the fix as an action: Move…, Raise…, Remove…>"},
+   tags:[{en:"Effort S"}],
+   also:{en:""},
+   ev:"img/1.png", ctx:"img/1-context.jpg", page:"<exact page URL>", cap:{en:"390 px, Arabic"},
+   sug:"", hint:{en:""}, hist:""},
+];
+// Words on the page itself.
+const L={
+  en:{issue:"Issue",ev:"Evidence",sug:"Suggested",all:"All",top:"Top issues",also:"Also seen in: ",page:"Open the page ↗",filter:"Filter",fix:"Fix: ",lang:"English"},
+  ar:{issue:"المشكلة",ev:"الدليل",sug:"المقترح",all:"الكل",top:"أهم المشكلات",also:"تظهر أيضًا في: ",page:"افتح الصفحة ↗",filter:"تصفية",fix:"الإصلاح: ",lang:"العربية"}};
+// =================== render (no need to edit) ===================
+const $=id=>document.getElementById(id),ORDER=Object.keys(KINDS);
+let lang=LANGS[0],filter="all";
+try{const s=localStorage.getItem("findings-lang");if(LANGS.includes(s))lang=s}catch(e){}
+const T=v=>v==null?"":(typeof v==="string"?v:(v[lang]??v[LANGS[0]]??Object.values(v)[0]??""));
+const shot=(src,full,alt)=>src?`<a class="shot" href="${full||src}" data-lb><img src="${src}" alt="${alt||""}" loading="lazy"></a>`:"";
+function draw(){
+  const t=L[lang]||L.en,R=document.documentElement;R.lang=lang;R.dir=lang==="ar"?"rtl":"ltr";
+  const sw=document.querySelector(".lang");sw.hidden=LANGS.length<2;
+  sw.innerHTML=LANGS.map(l=>`<button type="button" data-l="${l}" aria-pressed="${l===lang}">${(L[l]||L.en).lang}</button>`).join("");
+  document.title=T(PAGE.title);$("title").textContent=T(PAGE.title);$("meta").textContent=T(PAGE.meta);
+  $("status").innerHTML=T(PAGE.status);$("takeaway").textContent=T(PAGE.takeaway);
+  $("h-issue").textContent=t.issue;$("h-ev").textContent=t.ev;$("h-sug").textContent=t.sug;$("h-top").textContent=t.top;
+  const c={};ROWS.forEach(r=>c[r.k]=(c[r.k]||0)+1);
+  $("hero").innerHTML=ORDER.filter(k=>KINDS[k].tile&&c[k]).map(k=>`<div class="tile" style="--c:var(${KINDS[k].c})"><div class="n">${c[k]}</div><div class="l">${T(KINDS[k])}</div></div>`).join("");
+  $("counts").setAttribute("aria-label",t.filter);
+  $("counts").innerHTML=`<button type="button" data-f="all" aria-pressed="${filter==="all"}">${t.all} ${ROWS.length}</button>`+
+    ORDER.filter(k=>c[k]).map(k=>`<button type="button" class="chip" style="--c:var(${KINDS[k].c})" data-f="${k}" aria-pressed="${filter===k}">${T(KINDS[k])} ${c[k]}</button>`).join("");
+  const top=ROWS.filter(r=>KINDS[r.k]&&KINDS[r.k].top).sort((a,b)=>ORDER.indexOf(a.k)-ORDER.indexOf(b.k)).slice(0,5);
+  $("topbox").hidden=!top.length;$("top").innerHTML=top.map(r=>`<li>#${r.n} ${T(r.issue)}</li>`).join("");
+  let g="",h="";
+  ROWS.filter(r=>filter==="all"||r.k===filter).forEach(r=>{
+    const K=KINDS[r.k]||{c:"--grey"};
+    if(T(r.group)!==g){g=T(r.group);h+=`<tr class="sec"><td colspan="4">${g}</td></tr>`;}
+    h+=`<tr data-k style="--c:var(${K.c})"><td>${r.n}<span class="kind">${T(K)}</span></td>`+
+      `<td>${T(r.where)?`<div class="where">${T(r.where)}</div>`:""}<div class="issue">${T(r.issue)}</div>`+
+      `${T(r.why)?`<div class="why">${T(r.why)}</div>`:""}${T(r.fix)?`<div class="fix"><b>${t.fix}</b>${T(r.fix)}</div>`:""}`+
+      `${(r.tags||[]).length?`<div class="tags">${r.tags.map(x=>`<span class="tag">${T(x)}</span>`).join("")}</div>`:""}`+
+      `${T(r.also)?`<div class="also">${t.also}${T(r.also)}</div>`:""}${r.hist?`<div class="hist">${r.hist}</div>`:""}</td>`+
+      `<td data-h="${t.ev}"${!r.ev&&!r.page?' class="empty"':""}>${shot(r.ev,r.ctx,T(r.issue))}${T(r.cap)?`<div class="cap">${T(r.cap)}</div>`:""}${r.page?`<a href="${r.page}" target="_blank" rel="noopener">${t.page}</a>`:""}${!r.ev&&!r.page?"—":""}</td>`+
+      `<td data-h="${t.sug}"${!r.sug&&!T(r.hint)?' class="empty"':""}>${shot(r.sug,"",T(r.fix))}${T(r.hint)?`<div dir="auto">${T(r.hint)}</div>`:(r.sug?"":"—")}</td></tr>`;
+  });
+  $("rows").innerHTML=h;
+  $("panels").innerHTML=(PAGE.panels||[]).filter(p=>(p.items||[]).some(i=>T(i))).map(p=>`<div class="box"><h2>${T(p.title)}</h2><ul>${p.items.map(i=>T(i)).filter(Boolean).map(i=>`<li>${i}</li>`).join("")}</ul></div>`).join("");
+}
+$("counts").addEventListener("click",e=>{const b=e.target.closest("[data-f]");if(b){filter=b.dataset.f;draw();}});
+document.querySelector(".lang").addEventListener("click",e=>{const b=e.target.closest("[data-l]");if(b){lang=b.dataset.l;try{localStorage.setItem("findings-lang",lang)}catch(x){}draw();}});
+document.addEventListener("click",e=>{const a=e.target.closest("[data-lb]");if(!a)return;e.preventDefault();const d=$("lb");d.querySelector("img").src=a.getAttribute("href");d.showModal();});
+$("lb").addEventListener("click",()=>$("lb").close());
+draw();
+</script>
+</body>
+</html>
