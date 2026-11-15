@@ -1,7 +1,7 @@
 # Publishes the Claude Code plugin (mo@monjizeen) to the private
-# monjizeen/tools repo whenever its parts change on main. Account managers read
-# only that repo. Needs the secret TOOLS_REPO_TOKEN: a fine-grained token with
-# Contents read and write on monjizeen/tools only.
+# monjizeen/plugins repo whenever its parts change on main. Account managers read
+# only that repo. Needs the secret PLUGINS_REPO_TOKEN: a fine-grained token with
+# Contents read and write on monjizeen/plugins only.
 name: Publish plugin
 
 on:
@@ -26,30 +26,30 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      HAS_TOKEN: ${{ secrets.TOOLS_REPO_TOKEN != '' }}
+      HAS_TOKEN: ${{ secrets.PLUGINS_REPO_TOKEN != '' }}
     steps:
-      - name: Skip until monjizeen/tools is set up
+      - name: Skip until monjizeen/plugins is set up
         if: env.HAS_TOKEN != 'true'
-        run: echo "::notice::TOOLS_REPO_TOKEN is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
+        run: echo "::notice::PLUGINS_REPO_TOKEN is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
 
       - uses: actions/checkout@v4
         if: env.HAS_TOKEN == 'true'
 
-      - name: Check out monjizeen/tools
+      - name: Check out monjizeen/plugins
         if: env.HAS_TOKEN == 'true'
         uses: actions/checkout@v4
         with:
-          repository: monjizeen/tools
-          token: ${{ secrets.TOOLS_REPO_TOKEN }}
-          path: tools-repo
+          repository: monjizeen/plugins
+          token: ${{ secrets.PLUGINS_REPO_TOKEN }}
+          path: plugins-repo
 
       - name: Build the plugin
         if: env.HAS_TOKEN == 'true'
-        run: scripts/build-plugin.sh tools-repo "0.1.${{ github.run_number }}"
+        run: scripts/build-plugin.sh plugins-repo "0.1.${{ github.run_number }}"
 
       - name: Push if anything changed
         if: env.HAS_TOKEN == 'true'
-        working-directory: tools-repo
+        working-directory: plugins-repo
         run: |
           git config user.name "monjizeen-bot"
           git config user.email "bot@monjizeen.com"
