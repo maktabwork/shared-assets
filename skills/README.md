@@ -27,6 +27,7 @@ plugs in through `client-context-brief`. Plan and status: [SERVICES.md](SERVICES
 
 | Skill | Purpose |
 |-------|---------|
+| `understand-requirements` | First step on a ticket: say back what will be built in short bullets, split into requirements delivered one at a time, with the skill for each (Maher) |
 | `client-context-brief` | Build a client's kit at onboarding and turn it into a one-page brief per task |
 | `social-media-graphic` | Social post, carousel, story and ad graphics, Arabic and English |
 | `agent-requests` | Work the requests client agents send through our MCP: skills + context, do the work, QA, deliver; internal test flights |
