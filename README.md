@@ -112,3 +112,13 @@ jobs:
 Pattern docs: [asaas/packages/design-system/docs/INDEX.md](https://github.com/monjizeen/asaas/blob/main/packages/design-system/docs/INDEX.md)
 
 Sync from monjizeen: `cd asaas/packages/design-system && npm run sync`
+
+## Claude Code plugin
+
+Account managers and reviewers install this repo as a Claude Code plugin (our
+skills plus the Monjizeen connector). Setup: [docs/CLAUDE-CODE-PLUGIN.md](docs/CLAUDE-CODE-PLUGIN.md).
+
+```
+/plugin marketplace add monjizeen/shared-assets
+/plugin install monjizeen@monjizeen
+```

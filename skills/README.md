@@ -39,6 +39,7 @@ Markdown file. Markdown stays for our own notes.
 | `feedback-auditor` | Sort client feedback into client-specific, global or disagree; we review before any skill changes |
 | `org-environment` | Onboard, run and cut off a client org's Environment (the NAME = value keys our agents use), with setup prompts for us and for the org's own agent (Monjizeen MCP) |
 | `html-deliverable` | Hand any deliverable over as one visual HTML page; findings template with screenshots, filter chips and an AR / EN switch |
+| `monjizeen-ticket` | Work on a Monjizeen ticket in Claude Code with the plugin: start, client context and lessons, one HTML deliverable, post back with time and tokens, retest skill fixes (see docs/CLAUDE-CODE-PLUGIN.md) |
 | `page-screenshots` | Readable page screenshots: first screen plus the page in sections under the 8,000 px image limit, desktop and phone, after scrolling; red-boxed evidence crops |
 | `ux-audit` | Usability review of a live product or prototype: ranked findings, each with its screenshot and a concrete fix |
 | `implementation-review` | Check a build against what was asked (ticket, requirements, earlier comments): done, partly, wrong, missing, not asked for |
