@@ -1,4 +1,4 @@
-# Skills shipped in the Claude Code plugin (monjizeen@tools). Client work only:
+# Skills shipped in the Claude Code plugin (mo@monjizeen). Client work only:
 # repo and server workflows (start-work, new-project, security-check, …) stay
 # in shared-assets for the Monjizeen team.
 monjizeen-ticket

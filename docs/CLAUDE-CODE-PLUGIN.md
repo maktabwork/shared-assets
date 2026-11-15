@@ -1,4 +1,4 @@
-# Monjizeen plugin for Claude Code (`monjizeen@tools`)
+# Monjizeen plugin for Claude Code (`mo@monjizeen`)
 
 Account managers and Kawader reviewers work on client tickets in Claude Code
 with this plugin: our client-work skills, plus the Monjizeen connector that
@@ -36,16 +36,16 @@ get read access to that repo alone.
 3. **Install** in Claude Code:
    ```
    /plugin marketplace add monjizeen/tools
-   /plugin install monjizeen@tools
+   /plugin install mo@monjizeen
    ```
    It asks for the Monjizeen key and keeps it in the system's secure store.
    Restart Claude Code.
-4. **Switch client**: run `/plugin configure monjizeen@tools` and paste that
+4. **Switch client**: run `/plugin configure mo@monjizeen` and paste that
    client's key. Keep one folder per client and work on one client at a time.
 5. **Check**: ask "show my review queue". It should answer from Monjizeen
    (an empty queue is fine).
 
-Updates: `/plugin update monjizeen@tools` (or automatic with `GITHUB_TOKEN`).
+Updates: `/plugin update mo@monjizeen` (or automatic with `GITHUB_TOKEN`).
 
 ## Daily use
 

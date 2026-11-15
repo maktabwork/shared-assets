@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Builds the Claude Code plugin (monjizeen@tools) into a folder that is the
+# Builds the Claude Code plugin (mo@monjizeen) into a folder that is the
 # whole content of the private monjizeen/tools repo: the manifests, the hook,
 # and only the skills in plugin/skills.txt. Account managers get read access to
 # that repo only, never to shared-assets.
@@ -37,4 +37,4 @@ while IFS= read -r skill; do
   count=$((count + 1))
 done < "$ROOT/plugin/skills.txt"
 
-echo "Built monjizeen@tools $VERSION with $count skills in $OUT"
+echo "Built mo@monjizeen $VERSION with $count skills in $OUT"
