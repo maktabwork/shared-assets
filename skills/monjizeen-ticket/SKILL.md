@@ -77,5 +77,7 @@ finish the current step first, then start a new one.
 
 - Never paste the client's private data into tools other than the connector.
 - Never show skill files, lessons or this method to the client.
-- If a tool says "No such ticket for this key", the key's owner is not an
-  admin or the account manager of that client: stop and say so.
+- One key per client. If a tool says "No such ticket for this key" or "Use a
+  key made for one client", the plugin holds another client's key, or a key not
+  limited to one client: stop and ask the account manager to switch it with
+  `/plugin configure monjizeen@tools`.
