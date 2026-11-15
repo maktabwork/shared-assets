@@ -25,10 +25,18 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      HAS_TOKEN: ${{ secrets.TOOLS_REPO_TOKEN != '' }}
     steps:
+      - name: Skip until monjizeen/tools is set up
+        if: env.HAS_TOKEN != 'true'
+        run: echo "::notice::TOOLS_REPO_TOKEN is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
+
       - uses: actions/checkout@v4
+        if: env.HAS_TOKEN == 'true'
 
       - name: Check out monjizeen/tools
+        if: env.HAS_TOKEN == 'true'
         uses: actions/checkout@v4
         with:
           repository: monjizeen/tools
@@ -36,9 +44,11 @@ jobs:
           path: tools-repo
 
       - name: Build the plugin
+        if: env.HAS_TOKEN == 'true'
         run: scripts/build-plugin.sh tools-repo "0.1.${{ github.run_number }}"
 
       - name: Push if anything changed
+        if: env.HAS_TOKEN == 'true'
         working-directory: tools-repo
         run: |
           git config user.name "monjizeen-bot"
