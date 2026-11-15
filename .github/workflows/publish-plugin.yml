@@ -1,0 +1,62 @@
+# Publishes the Claude Code plugin (monjizeen@tools) to the private
+# monjizeen/tools repo whenever its parts change on main. Account managers read
+# only that repo. Needs the secret TOOLS_REPO_TOKEN: a fine-grained token with
+# Contents read and write on monjizeen/tools only.
+name: Publish plugin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+      - 'plugin/**'
+      - 'docs/CLAUDE-CODE-PLUGIN.md'
+      - 'scripts/build-plugin.sh'
+      - '.github/workflows/publish-plugin.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-plugin
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      HAS_TOKEN: ${{ secrets.TOOLS_REPO_TOKEN != '' }}
+    steps:
+      - name: Skip until monjizeen/tools is set up
+        if: env.HAS_TOKEN != 'true'
+        run: echo "::notice::TOOLS_REPO_TOKEN is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
+
+      - uses: actions/checkout@v4
+        if: env.HAS_TOKEN == 'true'
+
+      - name: Check out monjizeen/tools
+        if: env.HAS_TOKEN == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: monjizeen/tools
+          token: ${{ secrets.TOOLS_REPO_TOKEN }}
+          path: tools-repo
+
+      - name: Build the plugin
+        if: env.HAS_TOKEN == 'true'
+        run: scripts/build-plugin.sh tools-repo "0.1.${{ github.run_number }}"
+
+      - name: Push if anything changed
+        if: env.HAS_TOKEN == 'true'
+        working-directory: tools-repo
+        run: |
+          git config user.name "monjizeen-bot"
+          git config user.email "bot@monjizeen.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
+          git commit -m "Publish plugin 0.1.${{ github.run_number }} from shared-assets@${GITHUB_SHA::7}"
+          git push origin HEAD:main

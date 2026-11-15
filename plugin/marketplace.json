@@ -1,0 +1,12 @@
+{
+  "name": "tools",
+  "owner": { "name": "Monjizeen" },
+  "description": "Monjizeen's private Claude Code plugin for account managers and reviewers.",
+  "plugins": [
+    {
+      "name": "monjizeen",
+      "source": "./",
+      "description": "Monjizeen skills plus the Monjizeen connector: work on client tickets in Claude Code and the app keeps the record."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Skills shipped in the Claude Code plugin (monjizeen@tools). Client work only:
+# repo and server workflows (start-work, new-project, security-check, …) stay
+# in shared-assets for the Monjizeen team.
+monjizeen-ticket
+understand-requirements
+client-context-brief
+ux-audit
+implementation-review
+design-qa
+design-system-pattern
+ux-feature-spec
+information-architecture
+ui-screen-design
+ux-writing
+ux-ticket-writer
+social-media-graphic
+feedback-auditor
+agent-requests
+html-deliverable
+page-screenshots
+qa-reviewer
+ux-common
