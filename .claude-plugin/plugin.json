@@ -1,0 +1,24 @@
+{
+  "name": "monjizeen",
+  "version": "0.1.0",
+  "description": "Monjizeen skills plus the Monjizeen connector. Work on a ticket in Claude Code; the work, deliverable, time and tokens post to the ticket for review.",
+  "author": { "name": "Monjizeen" },
+  "userConfig": {
+    "api_key": {
+      "type": "string",
+      "title": "Monjizeen API key",
+      "description": "Your personal key from app.monjizeen.com/settings/api-keys (starts with mjz_).",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "mcpServers": {
+    "monjizeen": {
+      "type": "http",
+      "url": "https://app.monjizeen.com/mcp",
+      "headers": {
+        "Authorization": "Bearer ${user_config.api_key}"
+      }
+    }
+  }
+}
