@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Builds the Claude Code plugin (mo@monjizeen) into a folder that is the
 # whole content of the private monjizeen/tools repo: the manifests, the hook,
+# the Mo agent,
 # and only the skills in plugin/skills.txt. Account managers get read access to
 # that repo only, never to shared-assets.
 #   scripts/build-plugin.sh <out-dir> [version]
@@ -24,6 +25,7 @@ node -e '
   fs.writeFileSync(dest, JSON.stringify(manifest, null, 2) + "\n");
 ' "$ROOT/plugin/plugin.json" "$OUT/.claude-plugin/plugin.json" "$VERSION"
 cp -R "$ROOT/plugin/hooks" "$OUT/hooks"
+cp -R "$ROOT/plugin/agents" "$OUT/agents"
 cp "$ROOT/docs/CLAUDE-CODE-PLUGIN.md" "$OUT/README.md"
 
 count=0

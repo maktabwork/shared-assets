@@ -49,10 +49,19 @@ Updates: `/plugin update mo@monjizeen` (or automatic with `GITHUB_TOKEN`).
 
 ## Daily use
 
-- "Work on https://app.monjizeen.com/tickets/123": the `monjizeen-ticket`
-  skill starts the work, applies the client context and lessons, delivers one
-  HTML page and posts it back.
-- Reviewers: "review queue", then "retest step 45".
+Installing the plugin gives the account manager **Mo**, our agent, not just
+the skills. Mo is the entry point; the Maharat skills are what it uses.
+
+- `/mo https://app.monjizeen.com/tickets/123` (or "Mo, work on ticket 123"):
+  Mo reads the ticket and the client's Seyaq, says what it understood and
+  waits for the OK, then delivers one requirement at a time as HTML pages,
+  posting each step to the ticket with time and tokens, and saves new client
+  learnings.
+- To run a clear ticket in the background while you do something else: "ask
+  the mo agent to do ticket 123". It reports back what it posted.
+- Reviewers: `/mo review queue`, then "retest step 45".
+- The Maharat skills still work on their own (for example `/ux-audit`), but
+  only Mo posts the work to the ticket.
 
 ## Removing someone
 
