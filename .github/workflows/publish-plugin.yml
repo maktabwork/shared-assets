@@ -1,7 +1,8 @@
 # Publishes the Claude Code plugin (mo@monjizeen) to the private
 # monjizeen/plugins repo whenever its parts change on main. Account managers read
-# only that repo. Needs the secret PLUGINS_REPO_TOKEN: a fine-grained token with
-# Contents read and write on monjizeen/plugins only.
+# only that repo. Pushes over SSH with a deploy key: the secret
+# PLUGINS_DEPLOY_KEY holds the private key of a write deploy key on
+# monjizeen/plugins (nothing else).
 name: Publish plugin
 
 on:
@@ -26,29 +27,30 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     env:
-      HAS_TOKEN: ${{ secrets.PLUGINS_REPO_TOKEN != '' }}
+      HAS_KEY: ${{ secrets.PLUGINS_DEPLOY_KEY != '' }}
     steps:
       - name: Skip until monjizeen/plugins is set up
-        if: env.HAS_TOKEN != 'true'
-        run: echo "::notice::PLUGINS_REPO_TOKEN is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
+        if: env.HAS_KEY != 'true'
+        run: echo "::notice::PLUGINS_DEPLOY_KEY is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
 
       - uses: actions/checkout@v4
-        if: env.HAS_TOKEN == 'true'
+        if: env.HAS_KEY == 'true'
 
       - name: Check out monjizeen/plugins
-        if: env.HAS_TOKEN == 'true'
+        if: env.HAS_KEY == 'true'
         uses: actions/checkout@v4
         with:
           repository: monjizeen/plugins
-          token: ${{ secrets.PLUGINS_REPO_TOKEN }}
+          ssh-key: ${{ secrets.PLUGINS_DEPLOY_KEY }}
+          persist-credentials: true
           path: plugins-repo
 
       - name: Build the plugin
-        if: env.HAS_TOKEN == 'true'
+        if: env.HAS_KEY == 'true'
         run: scripts/build-plugin.sh plugins-repo "0.1.${{ github.run_number }}"
 
       - name: Push if anything changed
-        if: env.HAS_TOKEN == 'true'
+        if: env.HAS_KEY == 'true'
         working-directory: plugins-repo
         run: |
           git config user.name "monjizeen-bot"

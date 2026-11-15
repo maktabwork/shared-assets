@@ -72,11 +72,13 @@ The connector stops at once.
 ## How it is built (Monjizeen team)
 
 - Sources in `monjizeen/shared-assets`: `plugin/plugin.json` (connector and key
-  prompt), `plugin/marketplace.json`, `plugin/hooks/` (adds the tokens used
+  prompt), `plugin/marketplace.json`, `plugin/agents/mo.md` (Mo for background
+  runs), `plugin/hooks/` (adds the tokens used
   since `start_work` to `finish_work`), and the skills listed in
-  `plugin/skills.txt`.
+  `plugin/skills.txt` (`skills/mo` is Mo itself).
 - `scripts/build-plugin.sh <dir> [version]` builds the repo's content;
   `.github/workflows/publish-plugin.yml` publishes it to `monjizeen/plugins` on
-  every change to main (version `0.1.<run>`). It needs the secret
-  `PLUGINS_REPO_TOKEN`: a fine-grained token with Contents read and write on
-  `monjizeen/plugins` only.
+  every change to main (version `0.1.<run>`). It pushes over SSH with a deploy
+  key: a write deploy key on `monjizeen/plugins` only, whose private key is the
+  Actions secret `PLUGINS_DEPLOY_KEY` in shared-assets. Until that secret
+  exists the workflow skips with a notice.
