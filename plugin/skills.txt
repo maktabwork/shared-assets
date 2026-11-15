@@ -2,6 +2,7 @@
 # repo and server workflows (start-work, new-project, security-check, …) stay
 # in shared-assets for the Monjizeen team.
 mo
+get-to-the-point
 understand-requirements
 client-context-brief
 ux-audit

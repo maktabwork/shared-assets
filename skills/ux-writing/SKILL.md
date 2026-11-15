@@ -14,7 +14,8 @@ description: >
 Our method for the words in an interface. Each string has one job: help the
 user act. Marketing copy is a different job (`copywriting-ar-en`).
 
-Read [../ux-common/UX-STANDARDS.md](../ux-common/UX-STANDARDS.md) first.
+Read [../ux-common/UX-STANDARDS.md](../ux-common/UX-STANDARDS.md) first. The general
+writing rule (point first, plain words, no filler) is `get-to-the-point`.
 
 ## Before you start
 

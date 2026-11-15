@@ -40,6 +40,7 @@ Markdown file. Markdown stays for our own notes.
 | `org-environment` | Onboard, run and cut off a client org's Environment (the NAME = value keys our agents use), with setup prompts for us and for the org's own agent (Monjizeen MCP) |
 | `html-deliverable` | Hand any deliverable over as one visual HTML page; findings template with screenshots, filter chips and an AR / EN switch |
 | `mo` | Mo, our agent in Claude Code: reads a ticket and the client's Seyaq, agrees the understanding, delivers one requirement at a time as HTML, posts each step with time and tokens, saves client learnings, runs retests (plugin `mo@monjizeen`, see docs/CLAUDE-CODE-PLUGIN.md) |
+| `get-to-the-point` | House writing rule for every message, summary and deliverable: the point first, no filler, no walls of text, no jargon, every fact kept (built into Mo, checked by `qa-reviewer`) |
 | `page-screenshots` | Readable page screenshots: first screen plus the page in sections under the 8,000 px image limit, desktop and phone, after scrolling; red-boxed evidence crops |
 | `ux-audit` | Usability review of a live product or prototype: ranked findings, each with its screenshot and a concrete fix |
 | `implementation-review` | Check a build against what was asked (ticket, requirements, earlier comments): done, partly, wrong, missing, not asked for |

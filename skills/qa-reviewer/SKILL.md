@@ -38,6 +38,10 @@ the client would, not as the agent that made it.
 4b. **Format.** A report, review, spec or plan reaches the reader as a visual
    HTML page with its screenshots (`html-deliverable`), not as a Markdown
    file; every image and link on it opens. A Markdown deliverable is a FAIL.
+4c. **Short and direct.** Apply the four `get-to-the-point` CHECKs
+   (`short-direct`, `short-size`, `short-plain`, `short-facts`) to the page's
+   top box, summary and every message. A wall of text or unexplained jargon
+   is a FAIL.
 5. **Safety.** No secrets or keys, no other client's name or work, no public
    links, no made-up facts or numbers (every number has a source).
 6. **Rate it.** Score 1–5 on four dimensions (monjizeen-core

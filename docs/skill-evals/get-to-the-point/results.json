@@ -1,0 +1,508 @@
+[
+ {
+  "model": "sonnet",
+  "task": "t1",
+  "cond": "without",
+  "rep": 1,
+  "text": "I've read ticket 214. Here is what I understand.\n\n**Client:** Noor Pharmacy. Arabic first, calm tone, brand blue.\n\n**What they want:**\n1. A review of the current prescription upload screen. Customers find it confusing.\n2. Better error texts.\n3. A clearer \"My orders\" menu.\n\n**One question before I start:** is uploading by camera in scope, or only picking a file from the phone? The ticket doesn't say. It changes the review and the error texts. Camera adds cases like permission denied, blurry photo, and a photo that's too large.\n\nIf you don't know, I suggest I cover both and mark the camera parts separately. You can then cut them if the client says no. Or you can ask the client first.\n\nI haven't built anything yet. Tell me which way to go, or just say OK, and I'll start."
+ },
+ {
+  "model": "sonnet",
+  "task": "t1",
+  "cond": "without",
+  "rep": 2,
+  "text": "I've read ticket 214. Nothing is built yet.\n\n**What I understand**\nNoor Pharmacy says customers find the prescription upload screen confusing. They want three things:\n1. A review of the current upload screen (the app link is in the ticket).\n2. Better error texts.\n3. A clearer \"My orders\" menu.\n\nThe work should be Arabic first, in a calm tone, and use the brand blue.\n\n**What I need from you**\nThe ticket doesn't say if uploading by camera is in scope, or only picking a file from the phone. It changes the review, the error texts (camera permission, blurry photo) and the screen layout.\n\nMy suggestion is to include camera in the review and error texts, since customers will likely try it anyway. Can you confirm that with the client, or tell me to assume file-only?\n\nOnce you reply, I'll start with the review."
+ },
+ {
+  "model": "sonnet",
+  "task": "t1",
+  "cond": "with",
+  "rep": 1,
+  "text": "I need one answer on ticket 214: is camera upload in scope, or only picking a file from the phone? The ticket does not say.\n\nI found 3 things to deliver for Noor Pharmacy:\n- A review of the current upload screen (https://noor-pharmacy.example/app)\n- Better error texts\n- A clearer \"My orders\" menu\n\nEverything will be Arabic first, in a calm tone, with brand blue. I will not build until you give your OK."
+ },
+ {
+  "model": "sonnet",
+  "task": "t1",
+  "cond": "with",
+  "rep": 2,
+  "text": "I need one answer before I build: is uploading by camera in scope, or only picking a file from the phone? The ticket doesn't say.\n\nTicket 214 has 3 things to deliver for Noor Pharmacy:\n- A review of the current upload screen\n- Better error texts\n- A clearer \"My orders\" menu\n\nI will write Arabic first, in a calm tone, with brand blue. I'll start when you confirm the camera question and give your OK."
+ },
+ {
+  "model": "sonnet",
+  "task": "t2",
+  "cond": "without",
+  "rep": 1,
+  "text": "**Audit of the prescription upload screen, Noor Pharmacy app (Android)**\n\nChecked in Chrome DevTools at 360px width. I found 8 issues: 3 high, 3 medium, 2 low.\n\n**High**\n1. The upload button text has 2.8:1 contrast. It needs 4.5:1.\n2. The camera permission is requested before any explanation of why.\n3. A failed upload shows \"Error 4012\" with no way to retry.\n\n**Medium**\n4. No progress is shown during a 12-second upload.\n5. The Arabic button label is clipped at 360px.\n6. The remove-photo icon is 32px. The minimum tap size is 44px.\n\n**Low**\n7. There is no success screen. After upload, the user lands back on the same screen.\n8. Cancel discards the photo without asking.\n\n**Not checked**\n- iPhone/Safari\n- Logged-in order history\n- The camera flow on a real device\n\nThis was an emulated browser view, not a real phone. The camera permission and upload timing (items 2 and 4) should be confirmed on a real Android device.\n\n**Suggested first fixes:** items 1 to 3, since they block or confuse users at the key step."
+ },
+ {
+  "model": "sonnet",
+  "task": "t2",
+  "cond": "without",
+  "rep": 2,
+  "text": "Audited the prescription upload screen in the Noor Pharmacy app (Android, Chrome DevTools at 360px width). Found 8 issues: 3 high, 3 medium, 2 low.\n\n**High**\n1. The upload button text has a contrast of 2.8:1. It needs 4.5:1.\n2. The camera permission is requested before the user is told why.\n3. A failed upload shows \"Error 4012\" with no way to retry.\n\n**Medium**\n4. No progress is shown during a 12-second upload.\n5. The Arabic button label is clipped at 360px.\n6. The remove-photo icon is 32px. The minimum tap size is 44px.\n\n**Low**\n7. There is no success screen after upload. The user lands back on the same screen.\n8. Cancel discards the photo without asking.\n\n**Not checked**\n- iPhone/Safari\n- Logged-in order history\n- The camera flow on a real device\n\nBecause the camera flow was not tested on a real device, item 2 and the upload behavior in items 3 and 4 should be confirmed on one before fixes are signed off."
+ },
+ {
+  "model": "sonnet",
+  "task": "t2",
+  "cond": "with",
+  "rep": 1,
+  "text": "Audited the prescription upload screen (Android, Chrome DevTools at 360px): 8 problems, 3 high.\n\n**High**\n1. The upload button text is hard to read: 2.8:1, needs 4.5:1.\n2. The app asks for camera permission before explaining why.\n3. A failed upload shows \"Error 4012\" with no way to retry.\n\n**Medium**\n4. No progress is shown for 12 seconds during upload.\n5. The Arabic button label is clipped at 360px.\n6. The remove-photo icon is 32px; it needs 44px.\n\n**Low**\n7. No success screen; the user lands back on the same screen.\n8. Cancel discards the photo without asking.\n\nNot checked: iPhone/Safari, logged-in order history, the camera flow on a real device."
+ },
+ {
+  "model": "sonnet",
+  "task": "t2",
+  "cond": "with",
+  "rep": 2,
+  "text": "Audit of the prescription upload screen is done: 8 issues (3 high, 3 medium, 2 low), found on Android in Chrome DevTools at 360px.\n\nHigh:\n- Upload button text is hard to read: 2.8:1, needs 4.5:1.\n- Camera permission is requested before any explanation of why.\n- A failed upload shows \"Error 4012\" with no way to retry.\n\nMedium:\n- No progress is shown for 12 seconds during upload.\n- Arabic button label is clipped at 360px.\n- Remove-photo icon is 32px, needs 44px.\n\nLow:\n- No success screen after upload; the user lands back on the same screen.\n- Cancel discards the photo without asking.\n\nNot checked: iPhone/Safari, logged-in order history, the camera flow on a real device."
+ },
+ {
+  "model": "sonnet",
+  "task": "t3",
+  "cond": "without",
+  "rep": 1,
+  "text": "I couldn't open ticket 388. The system said there's no such ticket for this key, so I haven't touched anything on it.\n\nThe plugin is probably set up with a different client's key. To fix it:\n\n1. Run `/plugin configure mo@monjizeen`\n2. Paste the key for the right client\n\nTell me once that's done and I'll try ticket 388 again."
+ },
+ {
+  "model": "sonnet",
+  "task": "t3",
+  "cond": "without",
+  "rep": 2,
+  "text": "I couldn't open ticket 388. The system said there's no such ticket for this key. I haven't changed anything on it.\n\nThe plugin is probably set up with a different client's key.\n\nTo fix it:\n1. Run `/plugin configure mo@monjizeen`\n2. Paste the key for the right client\n\nTell me when that's done and I'll try ticket 388 again."
+ },
+ {
+  "model": "sonnet",
+  "task": "t3",
+  "cond": "with",
+  "rep": 1,
+  "text": "I can't start ticket 388. The system says there is no such ticket for this key, and I have done nothing on it. The plugin probably holds another client's key.\n\nTo fix it, run `/plugin configure mo@monjizeen` and paste the key for this client. Then tell me, and I will start the ticket again."
+ },
+ {
+  "model": "sonnet",
+  "task": "t3",
+  "cond": "with",
+  "rep": 2,
+  "text": "I can't open ticket 388: the plugin probably holds another client's key. I haven't done anything on the ticket.\n\nTo fix it, run `/plugin configure mo@monjizeen` and paste the right client's key. Tell me when that's done and I'll start the ticket."
+ },
+ {
+  "model": "sonnet",
+  "task": "t4",
+  "cond": "without",
+  "rep": 1,
+  "text": "**Prescription upload: what we found**\n\nWe tested the prescription upload screen the way it looks on an Android phone. We found 8 problems. 3 are serious because they can stop customers from sending you a prescription.\n\n**Fix first**\n1. **The Upload button is hard to read.** The text is too pale against the button color. People with weaker eyesight, or anyone in bright light, may not see it.\n2. **The app asks to use the camera without saying why.** Customers may tap \"Don't allow\" and then can't upload.\n3. **When an upload fails, the customer sees \"Error 4012\" and no way to try again.** They are likely to give up and leave.\n\n**Fix next**\n4. Nothing shows for about 12 seconds during upload, so customers may think the app has frozen.\n5. The Arabic button text is cut off on a standard phone screen.\n6. The remove-photo icon is too small to tap reliably.\n\n**Minor**\n7. After a successful upload, the customer lands back on the same screen with no confirmation.\n8. Tapping Cancel throws away the photo without asking.\n\n**What we haven't checked yet**\n- iPhone and Safari\n- The screen when a customer is logged in and viewing their order history\n- The camera on a real phone. We tested in a browser that imitates a phone screen, so camera behavior still needs confirming.\n\nThe details for each problem are below."
+ },
+ {
+  "model": "sonnet",
+  "task": "t4",
+  "cond": "without",
+  "rep": 2,
+  "text": "**Prescription upload screen: what we found**\n\nWe tested the upload screen on an Android phone-sized screen. It works, but three problems are the most likely to cause lost uploads. Five smaller ones can wait.\n\n**Fix first**\n- **The upload button is hard to read.** The text is too faint against the button color, especially in bright light.\n- **The app asks for camera access without saying why.** Customers may tap \"Deny\" and then be unable to upload.\n- **A failed upload shows \"Error 4012\" and no way to retry.** Customers are likely to give up.\n\n**Fix next**\n- Nothing appears on screen for about 12 seconds while a photo uploads, so it looks frozen.\n- The Arabic text on the button is cut off on a small phone.\n- The button to remove a photo is small and easy to miss.\n\n**Minor**\n- There is no confirmation screen after a successful upload.\n- Cancel deletes the photo without asking.\n\n**Not checked yet**\n- iPhone and Safari\n- Order history for logged-in customers\n- The camera on a real phone. We used a simulated phone screen, so the camera may behave differently."
+ },
+ {
+  "model": "sonnet",
+  "task": "t4",
+  "cond": "with",
+  "rep": 1,
+  "text": "The upload screen has 3 serious problems. Fix these first:\n\n1. Make the upload button text darker (contrast 2.8:1, needs 4.5:1).\n2. Explain why you need the camera before asking permission.\n3. Add a \"Try again\" button when an upload fails. Today it shows only \"Error 4012\".\n\n5 smaller issues are below. Not tested: iPhone, order history, camera on a real phone."
+ },
+ {
+  "model": "sonnet",
+  "task": "t4",
+  "cond": "with",
+  "rep": 2,
+  "text": "The prescription upload screen has 8 problems; 3 are high priority. Fix first:\n\n1. The upload button text is hard to read (2.8:1, needs 4.5:1).\n2. The app asks for camera access without saying why.\n3. A failed upload shows \"Error 4012\", with no retry.\n\nThe other 5 are below. Not checked: iPhone, order history, real-phone camera."
+ },
+ {
+  "model": "sonnet",
+  "task": "t5",
+  "cond": "without",
+  "rep": 1,
+  "text": "Ticket 214 is done. Here is what I did:\n\n- **Step 51, understanding:** done.\n- **Step 52, UX audit:** 8 findings, 3 of them high.\n- **Step 53, error texts:** 14 strings, in Arabic and English.\n\nI saved one note to the client's Seyaq: \"tone: calm, no exclamation marks\".\n\n**I need one answer from you:** is the app Android only, or also on iPhone?\n\nTicket: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "sonnet",
+  "task": "t5",
+  "cond": "without",
+  "rep": 2,
+  "text": "Ticket 214 is done. Link: https://app.monjizeen.com/tickets/214\n\n**What I did**\n- Step 51: understood the brief.\n- Step 52: UX audit. 8 findings, 3 of them high.\n- Step 53: error texts. 14 strings, in Arabic and English.\n\n**Saved to the client's Seyaq:** \"tone: calm, no exclamation marks\". I'll use it on future work for this client.\n\n**What I need from you:** Is the app Android only, or also on iPhone? Can you confirm with the client and tell me?"
+ },
+ {
+  "model": "sonnet",
+  "task": "t5",
+  "cond": "with",
+  "rep": 1,
+  "text": "Ticket 214 is done. I need one answer: is the app Android only, or also iPhone?\n\n- Understanding (step 51): done.\n- UX audit (step 52): 8 findings, 3 high.\n- Error texts (step 53): 14 strings, in Arabic and English.\n\nI saved \"tone: calm, no exclamation marks\" to the client's Seyaq.\n\nDetails: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "sonnet",
+  "task": "t5",
+  "cond": "with",
+  "rep": 2,
+  "text": "I need one answer from you: is the app Android only, or also iPhone?\n\nTicket 214 is otherwise done:\n- **Step 51, understanding:** done.\n- **Step 52, UX audit:** 8 findings, 3 of them high.\n- **Step 53, error texts:** 14 strings, in Arabic and English.\n\nI saved this to the client's Seyaq: \"tone: calm, no exclamation marks\".\n\nDetails: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "sonnet",
+  "task": "t6",
+  "cond": "without",
+  "rep": 1,
+  "text": "التذكرة 301 نصها \"حسّنوا التطبيق\" فقط. ما بدأت أي شغل لأن الطلب عام جداً. أحتاج منك ثلاثة أشياء:\n\n1. **أي شاشة أو جزء؟** مثلاً: تسجيل الدخول، الصفحة الرئيسية، الدفع، أو التطبيق كله. إذا عند العميل لقطة شاشة أو رابط، أرسله لي.\n2. **ما الهدف؟** مثلاً: سرعة أكبر، تصميم أجمل، تقليل الأخطاء، أو رفع التحويلات. وإذا في رقم محدد يريده العميل، اذكره.\n3. **ما الموعد؟** هل في تاريخ تسليم، أو إطلاق، أو اجتماع مرتبط به؟\n\nإذا ما عندك الإجابات، اسأل العميل بسؤال واحد قصير: \"أي جزء في التطبيق يزعجكم أكثر، وماذا تريدون أن يتغير؟\"\n\nأول ما توصلني الإجابات أبدأ."
+ },
+ {
+  "model": "sonnet",
+  "task": "t6",
+  "cond": "without",
+  "rep": 2,
+  "text": "التذكرة 301 نصها \"حسّنوا التطبيق\" فقط، وهذا لا يكفي لأبدأ. أحتاج منك ثلاثة أشياء:\n\n1. **أي شاشة؟** أو أي جزء من التطبيق يقصده العميل (مثلاً: تسجيل الدخول، الصفحة الرئيسية، الدفع). إن وُجدت لقطة شاشة أو رابط، أرسلها.\n2. **ما الهدف؟** ماذا يريد العميل أن يتغير: سرعة أفضل، شكل أجمل، تحويلات أكثر، أم شكوى محددة من المستخدمين؟\n3. **ما الموعد؟** هل هناك تاريخ تسليم، أو مناسبة مثل إطلاق أو عرض؟\n\nإن لم تكن الإجابات عندك، اسأل العميل مباشرة. وحتى يصلني ردك لن أغيّر شيئاً في التطبيق."
+ },
+ {
+  "model": "sonnet",
+  "task": "t6",
+  "cond": "with",
+  "rep": 1,
+  "text": "أحتاج منك ثلاثة أجوبة قبل أن أبدأ في التذكرة 301. نصها كله \"حسّنوا التطبيق\"، بلا رابط ولا شاشة ولا موعد.\n\n1. **الشاشة:** أي شاشة أو أي جزء من التطبيق؟\n2. **الهدف:** ماذا نريد أن يتغير؟ مثلاً: سرعة أكبر، استخدام أسهل، أو طلبات أكثر.\n3. **الموعد:** متى يحتاج العميل النتيجة؟\n\nلم أبدأ أي عمل. إن لم تكن الأجوبة عندك، اسأل العميل، أو أخبرني وأقترح شاشة نبدأ بها."
+ },
+ {
+  "model": "sonnet",
+  "task": "t6",
+  "cond": "with",
+  "rep": 2,
+  "text": "أحتاج منك ثلاثة أمور من العميل قبل أن أبدأ في التذكرة 301:\n\n1. **الشاشة:** أي شاشة أو أي خطوة في التطبيق (مثل التسجيل أو الدفع)، مع رابط التطبيق أو لقطة منها.\n2. **الهدف:** ماذا يعني \"تحسين\" عنده؟ مثلاً: أسرع، أوضح، أو أن يُكمل عدد أكبر من المستخدمين الطلب.\n3. **الموعد:** متى يريد النتيجة؟\n\nنص التذكرة كله \"حسّنوا التطبيق\"، بلا رابط ولا شاشة ولا موعد. لم أبدأ أي عمل."
+ },
+ {
+  "model": "haiku",
+  "task": "t1",
+  "cond": "without",
+  "rep": 1,
+  "text": "Ticket 214 is for Noor Pharmacy: \"Refresh the prescription upload screen.\"\n\n**What the client wants:**\n1. A review of the current upload screen.\n2. Better error messages.\n3. A clearer \"My orders\" menu.\n\n**Context I have:**\n- Customers say the upload screen is confusing.\n- The app is at https://noor-pharmacy.example/app.\n- Arabic first, calm tone, brand blue.\n\n**One thing the ticket doesn't settle:** Is uploading by camera in scope, or only picking a file from the phone? The camera path usually needs permission handling and extra screens, so it changes the size of the work.\n\nBefore I build anything, please confirm:\n- Is camera upload in scope or not?\n- Do you agree with the three items above as the full scope?\n\nOnce you say OK, I'll start with the review of the current screen and send you the findings before I change any copy or layout."
+ },
+ {
+  "model": "haiku",
+  "task": "t1",
+  "cond": "without",
+  "rep": 2,
+  "text": "Ticket 214 is understood. Here is what I read:\n\n**Client:** Noor Pharmacy\n**Ask:** Refresh the prescription upload screen. Customers find it confusing.\n\n**Three parts:**\n1. Review the current upload screen: https://noor-pharmacy.example/app\n2. Write clearer error messages, in Arabic first.\n3. Make the \"My orders\" menu clearer.\n\n**Style:** Calm tone. Brand blue.\n\n**One open question:** The ticket does not say if uploading by camera is in scope, or only choosing a file from the phone. Camera upload changes the screen flow and the error cases a lot, so I need your answer before I scope it.\n\nOnce you confirm the scope and the camera question, I will start the review and draft the Arabic error texts. Do you want me to go ahead on that basis?"
+ },
+ {
+  "model": "haiku",
+  "task": "t1",
+  "cond": "with",
+  "rep": 1,
+  "text": "Ticket 214 is understood and ready for your OK. The client wants three things: a review of the upload screen, clearer error texts, and a clearer \"My orders\" menu. I need one answer before I build: is uploading by camera in scope, or only picking a file from the phone? The ticket does not say. The other two items are clear."
+ },
+ {
+  "model": "haiku",
+  "task": "t1",
+  "cond": "with",
+  "rep": 2,
+  "text": "Ticket 214 is understood and ready for your OK. I need one answer before I build: is taking a photo with the camera in scope, or only choosing a file from the phone? The ticket does not say. The work covers three items: a review of the upload screen, clearer error texts in Arabic, and a clearer \"My orders\" menu. Once you confirm, I start."
+ },
+ {
+  "model": "haiku",
+  "task": "t2",
+  "cond": "without",
+  "rep": 1,
+  "text": "**Audit: prescription upload screen (Noor Pharmacy Android app)**\n\nChecked the upload screen in Chrome DevTools at 360px width. Found 8 issues: 3 high, 3 medium, 2 low.\n\n**High**\n1. Upload button text contrast is 2.8:1. WCAG AA needs 4.5:1.\n2. Camera permission is requested before the app explains why.\n3. A failed upload shows \"Error 4012\" with no retry option.\n\n**Medium**\n4. No progress indicator for 12 seconds during upload.\n5. The Arabic button label is clipped at 360px.\n6. The remove-photo icon is 32px. The tap target should be at least 44px.\n\n**Low**\n7. No success screen after upload. The user returns to the same screen.\n8. Cancel discards the photo without confirmation.\n\n**Not checked**\n- iPhone and Safari\n- Logged-in order history\n- The camera flow on a real device\n\nFindings 1 to 3 should be fixed first. Findings 2 and 3 affect whether users can complete an upload at all."
+ },
+ {
+  "model": "haiku",
+  "task": "t2",
+  "cond": "without",
+  "rep": 2,
+  "text": "Audit of the prescription upload screen, Noor Pharmacy Android app. Tested in Chrome DevTools at 360px width. 8 findings: 3 high, 3 medium, 2 low.\n\nHigh:\n1. Upload button text contrast is 2.8:1. The minimum is 4.5:1.\n2. Camera permission is requested before the user is told why.\n3. A failed upload shows \"Error 4012\" with no way to retry.\n\nMedium:\n4. No progress indicator for 12 seconds during upload.\n5. Arabic button label is clipped at 360px width.\n6. Remove-photo icon is 32px. The minimum tap target is 44px.\n\nLow:\n7. No success screen after upload. The user lands back on the same screen.\n8. Cancel discards the photo without asking.\n\nNot covered: iPhone/Safari, logged-in order history, and the camera flow on a real device."
+ },
+ {
+  "model": "haiku",
+  "task": "t2",
+  "cond": "with",
+  "rep": 1,
+  "text": "Audit of the prescription upload screen is done: 8 issues, 3 high. Tested on Android in Chrome DevTools at 360px width. Ranked by severity:\n\n- **High:** Upload button text is hard to read: 2.8:1 contrast, needs 4.5:1.\n- **High:** Camera permission is requested before any reason is given.\n- **High:** A failed upload shows \"Error 4012\" and no way to retry.\n- **Medium:** No progress shown for 12 seconds during upload.\n- **Medium:** Arabic button label is cut off at 360px width.\n- **Medium:** Remove-photo icon is 32px; the minimum is 44px.\n- **Low:** No success screen after upload; the user returns to the same screen.\n- **Low:** Cancel discards the photo without asking.\n\nNot checked: iPhone/Safari, logged-in order history, camera flow on a real device."
+ },
+ {
+  "model": "haiku",
+  "task": "t2",
+  "cond": "with",
+  "rep": 2,
+  "text": "Audit of the prescription upload screen is done: 3 high, 3 medium, and 2 low issues.\n\n**High**\n- The upload button text is hard to read: 2.8:1 contrast, needs 4.5:1.\n- Camera permission is requested before any reason is given.\n- A failed upload shows \"Error 4012\" and offers no way to retry.\n\n**Medium**\n- No progress is shown for 12 seconds during upload.\n- The Arabic button label is cut off at 360px width.\n- The remove-photo icon is 32px; it should be at least 44px to tap.\n\n**Low**\n- No success screen after upload; the user lands back on the same screen.\n- Cancel discards the photo without asking.\n\n**Not checked:** iPhone/Safari, logged-in order history, and the camera flow on a real device."
+ },
+ {
+  "model": "haiku",
+  "task": "t3",
+  "cond": "without",
+  "rep": 1,
+  "text": "I couldn't start ticket 388. The system says it doesn't exist for the key the plugin is using. That usually means the plugin is holding another client's key, so the ticket isn't visible to it. I haven't changed anything on the ticket.\n\nTo fix it, run:\n\n`/plugin configure mo@monjizeen`\n\nThen paste the API key for the client that owns ticket 388. Once that's saved, tell me and I'll start the ticket again.\n\nIf you're not sure which client owns 388, check the ticket in the helpdesk first, or tell me the client name and I'll help you sort out which key to use."
+ },
+ {
+  "model": "haiku",
+  "task": "t3",
+  "cond": "without",
+  "rep": 2,
+  "text": "I couldn't start ticket 388. The system says no ticket with that number exists under the key the plugin is using. My guess is the plugin is holding a key for a different client, so it can't see this one's tickets. I haven't changed anything on the ticket.\n\nTo fix it, run:\n\n`/plugin configure mo@monjizeen`\n\nThen paste the API key for the client this ticket belongs to. After that, I'll retry start_work on 388."
+ },
+ {
+  "model": "haiku",
+  "task": "t3",
+  "cond": "with",
+  "rep": 1,
+  "text": "Ticket 388 did not open. The key this session uses does not match this client's ticket, so I have made no changes. It may be another client's key.\n\nTo fix it, run `/plugin configure mo@monjizeen` and paste this client's key. Then tell me, and I will try ticket 388 again."
+ },
+ {
+  "model": "haiku",
+  "task": "t3",
+  "cond": "with",
+  "rep": 2,
+  "text": "Ticket 388 didn't open. The key the plugin is using doesn't match this client, so I haven't touched the ticket. It may be holding another client's key. To fix it, run `/plugin configure mo@monjizeen` and paste this client's key. Tell me when that's done and I'll open the ticket again."
+ },
+ {
+  "model": "haiku",
+  "task": "t4",
+  "cond": "without",
+  "rep": 1,
+  "text": "**The short version**\n\nWe checked the prescription upload screen in your app on an Android phone, at a small screen size. We found 8 problems: 3 high priority, 3 medium, and 2 low.\n\nThe most urgent ones are:\n- The upload button text is hard to read for many people.\n- The phone asks for camera access without saying why.\n- When an upload fails, the customer sees an error code and has no way to try again.\n\nOther issues include no progress shown during a 12-second upload, Arabic button text that gets cut off, a small remove-photo button that is hard to tap, no confirmation after a successful upload, and cancelling that deletes the photo without asking.\n\nWe have not yet checked iPhones, the logged-in order history, or the camera on a real device."
+ },
+ {
+  "model": "haiku",
+  "task": "t4",
+  "cond": "without",
+  "rep": 2,
+  "text": "**Prescription Upload Screen: What We Found**\n\nWe checked the prescription upload screen in the Android version of your app. We found 8 issues: 3 high priority, 3 medium, and 2 low.\n\n**The three high priority issues:**\n- Some button text is hard to read, especially for customers with weaker eyesight.\n- The app asks for camera access before explaining why. Many customers will decline.\n- When an upload fails, customers see \"Error 4012\" and have no way to try again.\n\n**Medium priority:**\n- The Arabic button label is cut off on narrow phones.\n- The remove-photo button is small and hard to tap.\n- Uploads can take 12 seconds with no sign that anything is happening.\n\n**Low priority:**\n- There is no confirmation after a successful upload.\n- Cancelling deletes the photo without asking first.\n\n**Not yet checked:** iPhone and Safari, the order history after login, and the camera on a real phone. We need to check these before we can say the screen works for every customer.\n\n**Suggested next step:** Fix the three high priority issues first. The full details are below."
+ },
+ {
+  "model": "haiku",
+  "task": "t4",
+  "cond": "with",
+  "rep": 1,
+  "text": "The upload screen has 3 serious problems to fix first. Customers may not be able to read the upload button, may refuse camera access without knowing why, and get stuck after a failed upload.\n\nFix first:\n1. Make the button text easier to read (now 2.8:1; needs 4.5:1).\n2. Explain why the camera is needed before asking for permission.\n3. Let customers retry after a failed upload, instead of showing \"Error 4012\".\n\nDetails, and what was not checked, are below."
+ },
+ {
+  "model": "haiku",
+  "task": "t4",
+  "cond": "with",
+  "rep": 2,
+  "text": "Three problems could stop customers from uploading prescriptions. Top fixes:\n\n1. Make the upload button text darker. It is too faint to read (2.8:1, needs 4.5:1).\n2. Explain why the app needs camera access before it asks.\n3. Let customers retry failed uploads. Now they see \"Error 4012\" and no way forward.\n\nNot checked: iPhone/Safari, order history, camera on a real phone."
+ },
+ {
+  "model": "haiku",
+  "task": "t5",
+  "cond": "without",
+  "rep": 1,
+  "text": "Ticket 214 is done, except for one question.\n\n**Finished:**\n- **Step 51, understanding:** I read the ticket and the client's context.\n- **Step 52, UX audit:** 8 findings, 3 of them high priority.\n- **Step 53, error texts:** 14 strings in Arabic and English.\n- **Saved to Seyaq:** \"tone: calm, no exclamation marks.\"\n\n**I need from you:**\n- Is the app Android only, or does it also run on iPhone? I can't finish the platform-specific notes until I know.\n\nTicket: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "haiku",
+  "task": "t5",
+  "cond": "without",
+  "rep": 2,
+  "text": "**Ticket 214: end report**\n\nBackground run is finished. Ticket: https://app.monjizeen.com/tickets/214\n\n**Done**\n- **Step 51, understanding:** complete.\n- **Step 52, UX audit:** 8 findings, 3 of them high priority.\n- **Step 53, error texts:** 14 strings, written in Arabic and English.\n\n**Saved to Seyaq**\n- Client tone note: \"calm, no exclamation marks.\" Error texts follow this.\n\n**Open question for you**\n- Is the app Android only, or does it also run on iPhone?\n\nThe answer affects which findings apply and whether the audit needs a second pass on iOS. Once you confirm, I can finish the platform check."
+ },
+ {
+  "model": "haiku",
+  "task": "t5",
+  "cond": "with",
+  "rep": 1,
+  "text": "Ticket 214 is done except one answer I need from you: is the app Android only, or also iPhone?\n\n- Understanding (step 51), UX audit (step 52): 8 findings, 3 of them high priority.\n- Error texts (step 53): 14 strings, in Arabic and English.\n- Saved to the client's Seyaq: \"tone: calm, no exclamation marks\".\n\nOnce you tell me Android, iPhone, or both, I can finish the platform-specific checks. Full details are on the ticket: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "haiku",
+  "task": "t5",
+  "cond": "with",
+  "rep": 2,
+  "text": "Ticket 214 is done, and I need one answer from you: is the app Android only, or also iPhone?\n\n- Understanding (step 51), UX audit (step 52): 8 findings, 3 high priority.\n- Error texts (step 53): 14 strings, in Arabic and English.\n- Saved to the client's Seyaq: \"tone: calm, no exclamation marks\".\n\nThe iPhone answer decides whether the audit covers one platform or both. Everything else is ready. Details: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "haiku",
+  "task": "t6",
+  "cond": "without",
+  "rep": 1,
+  "text": "<br>\n\nيجب أن أسألك عن ثلاثة أشياء قبل أن أبدأ بالتذكرة 301. نصها الكامل هو \"حسّنوا التطبيق\"، ولا يوجد فيها رابط ولا شاشة محددة ولا موعد، لذلك لا أستطيع معرفة المطلوب بدقة.\n\n1. **الشاشة أو الجزء من التطبيق:** أي شاشة أو مسار تقصد؟ إن أمكن، أرسل رابطاً للشاشة أو لقطة شاشة، أو اسم الصفحة كما يراه المستخدم.\n\n2. **الهدف:** ما المشكلة التي نحلّها؟ مثلاً: بطء في التحميل، أو أخطاء متكررة، أو صعوبة في إتمام خطوة معينة، أو شكوى من العميل، أو تصميم قديم يريدون تغييره. كلما كان الوصف أدق كان العمل أسرع.\n\n3. **الموعد:** متى يحتاجون هذا؟ وهل هناك موعد صارم، مثل إطلاق أو عرض للإدارة، أم أنه غير مستعجل؟\n\nبعد أن تجيبني عن هذه النقاط، سأبدأ بالعمل وأعود إليك بخطة قصيرة قبل التنفيذ."
+ },
+ {
+  "model": "haiku",
+  "task": "t6",
+  "cond": "without",
+  "rep": 2,
+  "text": "إلى المسؤول عن الحساب،\n\nاستلمت التذكرة 301 ونصها الكامل: \"حسّنوا التطبيق\". لا يوجد فيها رابط ولا شاشة محددة ولا موعد، لذلك لا أستطيع البدء قبل توضيح ثلاث نقاط:\n\n1. **الشاشة أو الجزء المقصود:** أي شاشة أو مسار في التطبيق تريد تحسينه؟ إذا أمكن، أرسل رابط الشاشة أو لقطة شاشة أو اسم الصفحة كما يراه المستخدم.\n\n2. **الهدف:** ما المشكلة الحالية، وما الذي تريد أن يتغير؟ مثلاً: تقليل عدد الخطوات، تسريع التحميل، تحسين الوضوح، إصلاح خطأ معيّن، أو تحسين المظهر. كلما كان الوصف أدق، كان الناتج أقرب لما تريده.\n\n3. **الموعد:** متى تحتاج هذا التحسين؟ وهل هناك موعد نهائي مرتبط بإطلاق أو عرض أو التزام مع العميل؟\n\nبمجرد أن تصلني هذه المعلومات، أبدأ بمراجعة الشاشة المحددة واقتراح خطة عمل قصيرة قبل التنفيذ لتوافق عليها.\n\nشكراً لك."
+ },
+ {
+  "model": "haiku",
+  "task": "t6",
+  "cond": "with",
+  "rep": 1,
+  "text": "أحتاج منك ثلاثة أشياء قبل أن أبدأ التذكرة 301: أي شاشة في التطبيق المقصودة، وما الهدف من التحسين (مثلاً سرعة أعلى، أو زر أوضح، أو تدفق أسهل للشراء)، وما الموعد المطلوب للتسليم. التذكرة الحالية تقول \"حسّنوا التطبيق\" فقط، بلا رابط ولا شاشة ولا موعد، ولا يمكنني تحديد نطاق العمل بدونها."
+ },
+ {
+  "model": "haiku",
+  "task": "t6",
+  "cond": "with",
+  "rep": 2,
+  "text": "أحتاج منك ثلاثة أشياء قبل أن أبدأ التذكرة 301. نصها الكامل \"حسّنوا التطبيق\"، ولا يوجد فيها رابط أو شاشة أو موعد.\n\n- **الشاشة:** أي شاشة في التطبيق المقصودة؟\n- **الهدف:** ما المشكلة التي نحلها، أو ما النتيجة المطلوبة؟\n- **الموعد:** متى يجب أن تكون جاهزة؟\n\nبعد أن تردّ، أبدأ بالعمل مباشرة."
+ },
+ {
+  "model": "nemotron",
+  "task": "t1",
+  "cond": "without",
+  "rep": 1,
+  "text": "I finished the understanding step on ticket 214 for Noor Pharmacy.\n\nScope:\n- Review the current upload screen\n- Better error texts\n- Clearer \"My orders\" menu\n\nBrand: Arabic first, calm tone, brand blue.\n\nOpen question: The ticket does not say if camera upload is in scope, or only picking a file from the phone.\n\nPlease confirm scope and OK to build."
+ },
+ {
+  "model": "nemotron",
+  "task": "t1",
+  "cond": "without",
+  "rep": 2,
+  "text": "Done reviewing ticket 214 for Noor Pharmacy.\n\nScope:\n- Review current prescription upload screen\n- Better error texts\n- Clearer \"My orders\" menu\n\nStyle: Arabic first, calm tone, brand blue.\n\nOpen question:\nThe ticket does not say if camera upload is in scope, or only picking a file from the phone.\n\nPlease confirm OK to build, and clarify camera vs file picker."
+ },
+ {
+  "model": "nemotron",
+  "task": "t1",
+  "cond": "with",
+  "rep": 1,
+  "text": "I need to know if camera upload is in scope for ticket 214 before I build. The understanding step is done. I reviewed the upload screen, error texts, and My orders menu for Noor Pharmacy. The ticket does not say if camera upload or phone file pick is included. Details are on the ticket."
+ },
+ {
+  "model": "nemotron",
+  "task": "t1",
+  "cond": "with",
+  "rep": 2,
+  "text": "I need to know if camera upload is in scope for ticket 214, or only picking a file from the phone. I finished the understanding step. The ticket covers a screen review, better error texts, and a clearer \"My orders\" menu for Noor Pharmacy (Arabic first, calm tone, brand blue). I will wait for your OK before building."
+ },
+ {
+  "model": "nemotron",
+  "task": "t2",
+  "cond": "without",
+  "rep": 1,
+  "text": "Audited the prescription upload screen on the Noor Pharmacy app using Android Chrome DevTools at 360px.\n\nMain findings:\n- High: Upload button contrast is too low (2.8:1, needs 4.5:1).\n- High: Camera permission is requested before explaining why.\n- High: Failed upload shows \"Error 4012\" with no retry option.\n- Medium: No progress shown during a 12-second upload.\n- Medium: Arabic button label is clipped at 360px width.\n- Medium: Remove-photo icon is 32px, below the 44px tap target.\n- Low: No success screen after upload; user returns to the same screen.\n- Low: Cancel discards the photo without asking.\n\nNot checked: iPhone/Safari, logged-in order history, camera flow on a real device."
+ },
+ {
+  "model": "nemotron",
+  "task": "t2",
+  "cond": "without",
+  "rep": 2,
+  "text": "Audited the prescription upload screen in the Noor Pharmacy app on Android using Chrome DevTools at 360px.\n\nMain findings:\n- High: Upload button contrast is 2.8:1 (needs 4.5:1).\n- High: Camera permission is requested before any explanation of why.\n- High: Failed upload shows \"Error 4012\" with no way to retry.\n- Medium: No progress shown for 12 seconds during upload.\n- Medium: Arabic button label is clipped at 360px width.\n- Medium: Remove-photo icon is 32px, below the 44px tap size.\n- Low: No success screen after upload; user lands back on the same screen.\n- Low: Cancel discards the photo without asking.\n\nNot checked: iPhone/Safari, logged-in order history, the camera flow on a real device."
+ },
+ {
+  "model": "nemotron",
+  "task": "t2",
+  "cond": "with",
+  "rep": 1,
+  "text": "Finished the Noor Pharmacy prescription upload audit on Android at 360px.\n\nFindings:\n- Upload button text is hard to read: 2.8:1 contrast (needs 4.5:1). High.\n- Camera permission requested before explaining why. High.\n- Failed upload shows \"Error 4012\" with no retry. High.\n- No progress for 12 seconds during upload. Medium.\n- Arabic button label clipped at 360px. Medium.\n- Remove-photo icon is 32px (needs 44px). Medium.\n- No success screen after upload. Low.\n- Cancel discards photo without asking. Low.\n\nNot checked: iPhone/Safari, logged-in order history, camera flow on a real device.",
+  "retried": true
+ },
+ {
+  "model": "nemotron",
+  "task": "t2",
+  "cond": "with",
+  "rep": 2,
+  "text": "Audited the prescription upload screen on Android at 360px. Found 8 issues: 3 high, 3 medium, 2 low.\n\nHigh:\n- Upload button contrast is 2.8:1 (needs 4.5:1).\n- Camera permission asked before explaining why.\n- Failed upload shows \"Error 4012\" with no retry.\n\nMedium:\n- No progress for 12 seconds during upload.\n- Arabic button label clipped at 360px.\n- Remove-photo icon is 32px (needs 44px).\n\nLow:\n- No success screen; user returns to same screen.\n- Cancel discards photo without asking.\n\nNot checked: iPhone/Safari, logged-in order history, camera flow on a real device."
+ },
+ {
+  "model": "nemotron",
+  "task": "t3",
+  "cond": "without",
+  "rep": 1,
+  "text": "I tried to start work on ticket 388, but it failed. The system says the key is not for this client. I have not done anything on the ticket yet. The plugin is likely holding another client's key. Please run `/plugin configure mo@monjizeen` and paste the right client's key."
+ },
+ {
+  "model": "nemotron",
+  "task": "t3",
+  "cond": "without",
+  "rep": 2,
+  "text": "I tried to start work on ticket 388, but it failed. The system says there's no such ticket for this key. I haven't done anything on the ticket yet.\n\nThe plugin is probably holding another client's key. To fix it, run `/plugin configure mo@monjizeen` and paste the right client's key."
+ },
+ {
+  "model": "nemotron",
+  "task": "t3",
+  "cond": "with",
+  "rep": 1,
+  "text": "Ticket 388 did not start. Nothing was done on it because the plugin holds another client's key.\n\nRun `/plugin configure mo@monjizeen` and paste the right client's key. I will then retry starting the ticket."
+ },
+ {
+  "model": "nemotron",
+  "task": "t3",
+  "cond": "with",
+  "rep": 2,
+  "text": "Ticket 388 did not start. The plugin holds another client's key, so nothing was done. Run `/plugin configure mo@monjizeen` and paste this client's key, then I will retry."
+ },
+ {
+  "model": "nemotron",
+  "task": "t4",
+  "cond": "without",
+  "rep": 1,
+  "text": "Prescription Upload Screen — Quick Review\n\nWe reviewed the prescription upload screen in the Noor Pharmacy app on Android.\n\nWhat needs attention:\n- 3 high-priority issues: the upload button is hard to read, the app asks for camera access before explaining why, and failed uploads show an error code with no way to try again.\n- 3 medium-priority issues: no progress bar during long uploads, Arabic button text gets cut off, and the remove-photo icon is too small to tap.\n- 1 low-priority issue: after a successful upload, there is no confirmation screen.\n\nNot reviewed yet:\n- iPhone and Safari\n- Order history for logged-in users\n- Camera flow on a real phone\n\nWe will start with the high-priority fixes and send you a plan."
+ },
+ {
+  "model": "nemotron",
+  "task": "t4",
+  "cond": "without",
+  "rep": 2,
+  "text": "Noor Pharmacy: Prescription Upload Check\n\nI reviewed the prescription upload screen on Android phones.\n\nWhat I found:\nThe upload flow works, but several issues could stop customers from completing it. That means lost prescriptions and lost sales.\n\nKey issues:\n- Buttons are hard to read, and Arabic text gets cut off.\n- The camera opens without explaining why.\n- Failed uploads show an error code with no retry button.\n- Customers wait in silence, then return to the same screen with no success message.\n\nWhat I need:\nYour approval to fix the most serious issues first so customers can upload prescriptions smoothly.\n\nNot yet checked: iPhones, Safari, and the logged-in order history."
+ },
+ {
+  "model": "nemotron",
+  "task": "t4",
+  "cond": "with",
+  "rep": 1,
+  "text": "Your prescription upload screen has 7 issues: 3 high, 2 medium, 2 low. Fix these first:\n\n1. Upload button contrast is 2.8:1; it needs 4.5:1.\n2. Ask for camera permission only after explaining why.\n3. Add a retry button after Error 4012 and show upload progress."
+ },
+ {
+  "model": "nemotron",
+  "task": "t4",
+  "cond": "with",
+  "rep": 2,
+  "text": "The prescription upload screen has 8 issues; 3 are high priority.\n\nFix first:\n1. Upload button text is hard to read (2.8:1; needs 4.5:1).\n2. Camera permission is asked before explaining why.\n3. Failed upload shows \"Error 4012\" with no retry button.\n\nNot checked: iPhone/Safari, logged-in order history, camera flow on a real device.",
+  "retried": true
+ },
+ {
+  "model": "nemotron",
+  "task": "t5",
+  "cond": "without",
+  "rep": 1,
+  "text": "Ticket 214 is done.\n\nWhat I completed:\n- Step 51: understanding step\n- Step 52: UX audit — 8 findings, 3 high priority\n- Step 53: error texts — 14 strings, Arabic and English\n\nSaved to the client's Seyaq with tone: calm, no exclamation marks.\n\nOpen question: Is the app Android only, or also iPhone?\n\nTicket link: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "nemotron",
+  "task": "t5",
+  "cond": "without",
+  "rep": 2,
+  "text": "Ticket 214 is done.\n\nWhat I did:\n- Step 51: Understanding complete.\n- Step 52: UX audit done. 8 findings, 3 high priority.\n- Step 53: Error texts done. 14 strings, Arabic and English.\n- Saved tone to Seyaq: calm, no exclamation marks.\n\nWhat I need:\n- Is the app Android only, or also iPhone?\n\nTicket link: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "nemotron",
+  "task": "t5",
+  "cond": "with",
+  "rep": 1,
+  "text": "Ticket 214 is done. I finished step 51 (understanding), step 52 (UX audit: 8 findings, 3 high), and step 53 (14 error strings in Arabic and English). I saved the tone rule to Seyaq: calm, no exclamation marks. I need one answer before I close it: is the app Android only, or also iPhone? https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "nemotron",
+  "task": "t5",
+  "cond": "with",
+  "rep": 2,
+  "text": "Ticket 214 is done. I need one answer: is the app Android only, or also iPhone?\n\nWhat I did:\n- Step 51 understanding: complete\n- Step 52 UX audit: 8 findings, 3 high\n- Step 53 error texts: 14 strings, Arabic and English\n- Saved tone to Seyaq: calm, no exclamation marks\n\nNext: waiting on your platform answer. Ticket: https://app.monjizeen.com/tickets/214"
+ },
+ {
+  "model": "nemotron",
+  "task": "t6",
+  "cond": "without",
+  "rep": 1,
+  "text": "مرحباً، نظرت في التذكرة 301. نصها فقط \"حسّنوا التطبيق\" ولا يوجد رابط ولا شاشة ولا موعد.\n\nقبل أن أبدأ، أحتاج منك:\n- أي شاشة؟\n- ما الهدف من التحسين؟\n- ما الموعد النهائي للتسليم؟\n\nأرجو إرسال التفاصيل ليبدأ العمل."
+ },
+ {
+  "model": "nemotron",
+  "task": "t6",
+  "cond": "without",
+  "rep": 2,
+  "text": "أهلاً، استلمت التذكرة 301. النص فقط: \"حسّنوا التطبيق\". لا يوجد رابط ولا شاشة ولا موعد.\n\nقبل أن أبدأ، أحتاج منك:\n1. أي شاشة في التطبيق؟\n2. ما الهدف من التحسين؟ (مثلاً: سرعة، تصميم، إصلاح عطل)\n3. ما الموعد النهائي للتسليم؟\n\nبمجرد ما ترسل التفاصيل، أبدأ العمل."
+ },
+ {
+  "model": "nemotron",
+  "task": "t6",
+  "cond": "with",
+  "rep": 1,
+  "text": "أحتاج منك ثلاث معلومات قبل أن أبدأ التذكرة 301:\n- الشاشة المستهدفة في التطبيق.\n- هدف التحسين (مثل: سرعة، سهولة استخدام، أو زيادة المبيعات).\n- موعد التسليم.\n\nنص التذكرة يقول \"حسّنوا التطبيق\" فقط، ولا يوجد رابط أو شاشة أو موعد."
+ },
+ {
+  "model": "nemotron",
+  "task": "t6",
+  "cond": "with",
+  "rep": 2,
+  "text": "أحتاج منك ثلاث تفاصيل قبل أن أبدأ في التذكرة 301:\n\n1. أي شاشة تريد تحسينها؟ (التذكرة لا تحدد شاشة)\n2. ما الهدف من التحسين؟ (مثلاً: تسريع الأداء، تسهيل الاستخدام، أو إصلاح خطأ)\n3. ما الموعد النهائي للتسليم؟\n\nالتذكرة نصها فقط \"حسّنوا التطبيق\" ولا تحتوي على رابط أو موعد."
+ }
+]
