@@ -59,7 +59,8 @@ server {
     ssl_ciphers HIGH:!aNULL:!MD5;
 
     add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-Content-Type-Options "nosniff";
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header Strict-Transport-Security "max-age=31536000" always;
 
     charset utf-8;
 
