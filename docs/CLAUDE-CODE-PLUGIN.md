@@ -73,7 +73,9 @@ The connector stops at once.
 
 - Sources in `monjizeen/shared-assets`: `plugin/plugin.json` (connector and key
   prompt), `plugin/marketplace.json`, `plugin/agents/mo.md` (Mo for background
-  runs), `plugin/hooks/` (adds the tokens used
+  runs), `plugin/agents/lead-*.md` (the leads: one specialist per skill area,
+  built on Claude Code subagents, that Mo calls from a task; each loads one
+  existing skill, so a skill is never rewritten for a lead), `plugin/hooks/` (adds the tokens used
   since `start_work` to `finish_work`), and the skills listed in
   `plugin/skills.txt` (`skills/mo` is Mo itself).
 - `scripts/build-plugin.sh <dir> [version]` builds the repo's content;
