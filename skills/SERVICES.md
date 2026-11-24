@@ -16,10 +16,10 @@ look:
 3. **Standards for MENA work**: Arabic, RTL, Saudi and Gulf specifics.
 4. **Deliver**: what to hand over and how.
 5. **Quality checks**: `CHECK [key]:` items, the same syntax monjizeen-core and
-   monjizeen-app read, reported as PASS, FAIL or UNKNOWN.
+   monjizeen read, reported as PASS, FAIL or UNKNOWN.
 
 Skills hold **our** methods and standards. **Client** context (brand, audience,
-rules, their QA list) stays in monjizeen-app at the org, project or ticket level
+rules, their QA list) stays in monjizeen at the org, project or ticket level
 and plugs in through the brief. Client-specific rules never go into a skill.
 
 Reference skills from open source (listed per row) were read and adapted, not
@@ -34,7 +34,7 @@ feature specs, audits, design QA, tickets, IA and texts. They share
 
 A service is offered to client agents (through the Monjizeen MCP) only when
 its skill is ready: built here, passed internal test flights
-(`agent-requests`), and marked `ready` in monjizeen-app
+(`agent-requests`), and marked `ready` in monjizeen
 `config/agent_services.php`. Each package then picks the ready services it
 includes (Admin → Packages); advanced services go in the higher packages.
 Every delivery passes `qa-reviewer`; client feedback goes through

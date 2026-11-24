@@ -13,7 +13,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DEPLOY_ROOT="/srv/projects/${PROJECT}"
 STAGING="${DEPLOY_ROOT}/staging"
 PROD="${DEPLOY_ROOT}/production"
-REPO="git@github.com:monjizeen/${PROJECT}.git"
+REPO="git@github.com:maktabwork/${PROJECT}.git"
 CERTBOT_EMAIL="${CERTBOT_EMAIL:-}"
 
 ensure_cert() {

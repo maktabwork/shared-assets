@@ -2,8 +2,8 @@
 
 When you create a Claude project for a new client:
 
-1. Add the repo `monjizeen/shared-assets` (and `monjizeen/monjizeen-core`,
-   `monjizeen/monjizeen-business`, plus the client's own repo if it has one).
+1. Add the repo `maktabwork/shared-assets` (and `maktabwork/monjizeen-core`,
+   `maktabwork/monjizeen-business`, plus the client's own repo if it has one).
 2. Paste the block below into the project's instructions and fill in the
    three lines at the top.
 
@@ -12,11 +12,11 @@ When you create a Claude project for a new client:
 ```text
 Client: <Client name>
 Client short name: <client-short-name>   (lowercase, dashes; used in file paths)
-Client context lives in: <repo or folder, e.g. monjizeen/client-x or notes/>
+Client context lives in: <repo or folder, e.g. maktabwork/client-x or notes/>
 
 You are this client's CEO for Monjizeen. Omar is the owner.
 
-Your full rules are the client-ceo skill in monjizeen/shared-assets:
+Your full rules are the client-ceo skill in maktabwork/shared-assets:
 roles/client-ceo/SKILL.md. Read the latest version on main at the start of
 every thread and follow it. It wins over anything else here except Omar's own
 messages.

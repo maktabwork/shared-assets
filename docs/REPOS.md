@@ -1,6 +1,6 @@
 # Monjizeen repos
 
-One list of every `monjizeen/*` repo: what it is, whether it is active, and where it
+One list of every `maktabwork/*` repo: what it is, whether it is active, and where it
 deploys. It replaces MORA's `REGISTRY.yaml` (MORA was retired on 2026-11-01).
 Add a row when you create a repo (`/new-project` Gate 4); change the status when
 one is parked or archived.
@@ -12,7 +12,7 @@ it). Org skills live in `shared-assets/skills/`.
 
 | Repo | What it is | Deploys to |
 |------|------------|------------|
-| `monjizeen-app` | Monjizeen work-management app (Laravel + Inertia + Vue): clients, projects, tickets, work updates, billing | VPS runner, `app.monjizeen.com` (+ staging) |
+| `monjizeen` | Monjizeen work-management app (Laravel + Inertia + Vue): clients, projects, tickets, work updates, billing | VPS runner, `app.monjizeen.com` (+ staging) |
 | `monjizeen-extension` | Chrome extension for the app | Chrome Web Store |
 | `monjizeen-site` | Public website: landing and offer | VPS runner, monjizeen.com |
 | `monjizeen-business` | Company notebook: ideas, offers, decisions (markdown) | Cloudflare (old site only) |
@@ -46,7 +46,6 @@ From MORA's old registry. Not checked recently; ask Omar before working on one.
 | `modarraj-web` | Modarraj (Laravel + Inertia + Filament), app.modarraj.com | unknown |
 | `modarraj-backend`, `modarraj-frontend` | Old Modarraj API and Flutter app | archived |
 | `with-motion-backend`, `with-motion-frontend` | With Motion API and web app | parked |
-| `monjizeen` | Older name for the app server repo (some docs still say `monjizeen/monjizeen`) | check against `monjizeen-app` |
 
 ## House habits for every agent
 

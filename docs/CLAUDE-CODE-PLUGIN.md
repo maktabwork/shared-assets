@@ -3,9 +3,9 @@
 Account managers and Kawader reviewers work on client tickets in Claude Code
 with this plugin: our client-work skills, plus the Monjizeen connector that
 posts the work, HTML deliverable, time and tokens to the ticket. The app runs
-no AI. How the app side works: monjizeen-app `docs/CLAUDE_CODE_WORK.md`.
+no AI. How the app side works: monjizeen `docs/CLAUDE_CODE_WORK.md`.
 
-The plugin lives in the private GitHub repo **`monjizeen/plugins`**. It holds only
+The plugin lives in the private GitHub repo **`maktabwork/plugins`**. It holds only
 the plugin (no other skills, client files or workflows), so account managers
 get read access to that repo alone.
 
@@ -15,8 +15,8 @@ get read access to that repo alone.
    paid by the company.
 2. **GitHub**: they need a GitHub account. Add it to the GitHub team
    **account-managers** in the monjizeen organization
-   (github.com/orgs/monjizeen/teams/account-managers → Add a member). That
-   team has **Read** on `monjizeen/plugins` only.
+   (github.com/orgs/maktabwork/teams/account-managers → Add a member). That
+   team has **Read** on `maktabwork/plugins` only.
 3. **Monjizeen**: make them the account manager of each client organization
    they serve.
 
@@ -26,7 +26,7 @@ get read access to that repo alone.
    Claude Code uses the computer's own git sign-in. The easiest is the GitHub
    CLI: install it, run `gh auth login`, choose GitHub.com and HTTPS, and say
    yes to "Authenticate Git with your GitHub credentials". Check with
-   `git ls-remote https://github.com/monjizeen/plugins` (it lists refs, no error).
+   `git ls-remote https://github.com/maktabwork/plugins` (it lists refs, no error).
    For automatic plugin updates in the background, also set `GITHUB_TOKEN`
    in their shell profile, e.g. `export GITHUB_TOKEN=$(gh auth token)`.
 2. **One Monjizeen key per client**: in Monjizeen, Settings → API keys → New
@@ -35,7 +35,7 @@ get read access to that repo alone.
    refused by the work tools. Copy the key once; it is shown only then.
 3. **Install** in Claude Code:
    ```
-   /plugin marketplace add monjizeen/plugins
+   /plugin marketplace add maktabwork/plugins
    /plugin install mo@monjizeen
    ```
    It asks for the Monjizeen key and keeps it in the system's secure store.
@@ -71,7 +71,7 @@ The connector stops at once.
 
 ## How it is built (Monjizeen team)
 
-- Sources in `monjizeen/shared-assets`: `plugin/plugin.json` (connector and key
+- Sources in `maktabwork/shared-assets`: `plugin/plugin.json` (connector and key
   prompt), `plugin/marketplace.json`, `plugin/agents/mo.md` (Mo for background
   runs), `plugin/agents/lead-*.md` (the leads: one specialist per skill area,
   built on Claude Code subagents, that Mo calls from a task; each loads one
@@ -79,8 +79,8 @@ The connector stops at once.
   since `start_work` to `finish_work`), and the skills listed in
   `plugin/skills.txt` (`skills/mo` is Mo itself).
 - `scripts/build-plugin.sh <dir> [version]` builds the repo's content;
-  `.github/workflows/publish-plugin.yml` publishes it to `monjizeen/plugins` on
+  `.github/workflows/publish-plugin.yml` publishes it to `maktabwork/plugins` on
   every change to main (version `0.1.<run>`). It pushes over SSH with a deploy
-  key: a write deploy key on `monjizeen/plugins` only, whose private key is the
+  key: a write deploy key on `maktabwork/plugins` only, whose private key is the
   Actions secret `PLUGINS_DEPLOY_KEY` in shared-assets. Until that secret
   exists the workflow skips with a notice.

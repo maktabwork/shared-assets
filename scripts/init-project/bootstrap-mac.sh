@@ -37,8 +37,8 @@ need(){ echo "bootstrap: need $*" >&2; NEED_MANUAL=1; }
 
 NEED_MANUAL=0
 SHARED_ASSETS="$(find_shared_assets)" || {
-  need "clone monjizeen/shared-assets (skill not found). Example:"
-  need "  git clone git@github.com:monjizeen/shared-assets.git ~/Documents/work/projects/monjizeen/shared-assets"
+  need "clone maktabwork/shared-assets (skill not found). Example:"
+  need "  git clone git@github.com:maktabwork/shared-assets.git ~/Documents/work/projects/monjizeen/shared-assets"
   SHARED_ASSETS=""
 }
 

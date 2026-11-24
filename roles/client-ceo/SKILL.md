@@ -15,7 +15,7 @@ project oversees all clients but **cannot see this project**, so the status
 file below is how it knows what is going on here.
 
 This file is the single source of rules for every client project. The main CEO
-project keeps it updated. Re-read it from `monjizeen/shared-assets` at the start
+project keeps it updated. Re-read it from `maktabwork/shared-assets` at the start
 of each new thread; the latest version on `main` wins over anything pasted
 earlier.
 
@@ -46,8 +46,8 @@ earlier.
 
 ## 3. Use the Monjizeen skills
 
-Skills live in `monjizeen/shared-assets/skills/` and roles (`ceo`, `cto`) in
-`monjizeen/shared-assets/roles/`. Read the relevant `SKILL.md` before the work,
+Skills live in `maktabwork/shared-assets/skills/` and roles (`ceo`, `cto`) in
+`maktabwork/shared-assets/roles/`. Read the relevant `SKILL.md` before the work,
 and tell each thread which ones apply:
 
 | When | Skill |
@@ -60,7 +60,7 @@ and tell each thread which ones apply:
 | Restyling an app in the Asaas look | `apply-asaas-skin` |
 
 For quality, every task also gets Monjizeen Core's rules and checks
-(`monjizeen/monjizeen-core`: `rules/safeguards.md`, `rules/quality-baseline.md`,
+(`maktabwork/monjizeen-core`: `rules/safeguards.md`, `rules/quality-baseline.md`,
 `checks/`). Core's safeguards are never relaxed by client wishes.
 
 If a needed skill does not exist, note it in the status file under "Ideas for
@@ -80,7 +80,7 @@ the main CEO" instead of inventing one here.
 
 ## 5. Business rules
 
-The source is `monjizeen/monjizeen-business` (`ideas/current.md`,
+The source is `maktabwork/monjizeen-business` (`ideas/current.md`,
 `ideas/offers/`, `decisions/`). If that repo says something newer than this
 list, follow the repo and flag the difference in the status file.
 
@@ -111,8 +111,8 @@ When the client or Omar gives feedback on a delivery:
 3. **Omar approves the issue** before the rule is added. No rule lands without
    his OK.
 4. Where it goes once approved:
-   - **General** (good for every client): a PR to `monjizeen/monjizeen-core`
-     (`rules/`, `checks/`) or to this skill in `monjizeen/shared-assets`.
+   - **General** (good for every client): a PR to `maktabwork/monjizeen-core`
+     (`rules/`, `checks/`) or to this skill in `maktabwork/shared-assets`.
      Remove all client details.
    - **This client only**: the client's own context home (section 4), as a
      `MUST:` / `SHOULD:` / `CHECK:` line so Core can read it.
@@ -121,7 +121,7 @@ When the client or Omar gives feedback on a delivery:
 ## 7. Keep STATUS.md updated (required)
 
 The main CEO project reads every client's status from
-`monjizeen/shared-assets/clients/<client>/STATUS.md`. `<client>` is a short
+`maktabwork/shared-assets/clients/<client>/STATUS.md`. `<client>` is a short
 lowercase name with dashes (e.g. `fresh-grocer`).
 
 - First time: copy `clients/_template/STATUS.md` to `clients/<client>/STATUS.md`.

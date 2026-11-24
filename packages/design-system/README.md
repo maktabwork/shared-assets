@@ -2,7 +2,7 @@
 
 The org design system now lives in the **`asaas`** repo:
 
-- Package: `@asaas/design-system` → `github.com/monjizeen/asaas` (`packages/design-system/`)
+- Package: `@asaas/design-system` → `github.com/maktabwork/asaas` (`packages/design-system/`)
 - Live gallery: https://enjaz.mnjz.in
 
 ## Install in mono root apps
@@ -13,5 +13,5 @@ The org design system now lives in the **`asaas`** repo:
 
 ## Docs
 
-- [asaas/packages/design-system/docs/INDEX.md](https://github.com/monjizeen/asaas/blob/main/packages/design-system/docs/INDEX.md)
-- [asaas/packages/design-system/docs/PATTERNS.md](https://github.com/monjizeen/asaas/blob/main/packages/design-system/docs/PATTERNS.md)
+- [asaas/packages/design-system/docs/INDEX.md](https://github.com/maktabwork/asaas/blob/main/packages/design-system/docs/INDEX.md)
+- [asaas/packages/design-system/docs/PATTERNS.md](https://github.com/maktabwork/asaas/blob/main/packages/design-system/docs/PATTERNS.md)
