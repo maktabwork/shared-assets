@@ -25,7 +25,7 @@ VPS_SSH="${VPS_SSH_USER}@${VPS_SSH_HOST}"
 VPS_SHARED_ASSETS="${VPS_SHARED_ASSETS_PATH:-/srv/projects/shared-assets}"
 DEPLOY_ROOT="/srv/projects/${PROJECT}"
 PROD="${DEPLOY_ROOT}/production"
-REPO="git@github.com:monjizeen/${PROJECT}.git"
+REPO="git@github.com:maktabwork/${PROJECT}.git"
 
 SSH_OPTS=(-o BatchMode=yes -o ConnectTimeout=15)
 

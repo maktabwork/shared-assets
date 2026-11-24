@@ -26,4 +26,4 @@ Keep each role to these sections, in this order:
 5. **Decision rules**: how it chooses, and when it asks.
 
 A role names skills; it does not repeat their steps. Shared rules (safeguards,
-quality baseline) live in `monjizeen/monjizeen-core` and are linked, not copied.
+quality baseline) live in `maktabwork/monjizeen-core` and are linked, not copied.

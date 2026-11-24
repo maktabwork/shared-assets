@@ -9,7 +9,7 @@ sign-in (Gate 5, see "Internal tools" below).
 
 | Kind of project | Deploys with | Runs on | Example |
 |-----------------|--------------|---------|---------|
-| Laravel web app | `actions/deploy-laravel` (`local: "true"`) | the VPS, its own self-hosted runner | monjizeen-app, monjizeen-site |
+| Laravel web app | `actions/deploy-laravel` (`local: "true"`) | the VPS, its own self-hosted runner | monjizeen, monjizeen-site |
 | Background service (Node, Python…) | `actions/deploy-service` | the VPS, its own self-hosted runner | radar |
 | Static site on Cloudflare | `wrangler deploy` | GitHub's machines (`ubuntu-latest`) | monjizeen-business |
 | Chrome extension | release workflow + Chrome Web Store script | GitHub's machines | monjizeen-extension |
@@ -44,8 +44,8 @@ the first commit; never ship one open "for now".
    code back on its callback, and swaps it server to server at
    `POST https://app.monjizeen.com/api/tools/{tool}/redeem`. Who may enter is
    decided only in the app (team and doers, never client-only members).
-   Full guide: monjizeen-app `docs/TOOL_SIGN_IN.md`.
-2. **Register the tool** with one line in monjizeen-app `config/tools.php`
+   Full guide: monjizeen `docs/TOOL_SIGN_IN.md`.
+2. **Register the tool** with one line in monjizeen `config/tools.php`
    (slug, name, callback URL), merge, and deploy the app to production.
 3. **Gate everything**, not just the API: pages, JSON, images, videos,
    downloads. Node/static tools: nginx `auth_request` to the tool's

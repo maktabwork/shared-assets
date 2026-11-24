@@ -82,7 +82,7 @@ Two kinds of web projects. Never mix “live on mnjz.in” and “live on custom
 
 | Key | Value |
 |-----|-------|
-| GitHub org | `monjizeen` |
+| GitHub org | `maktabwork` |
 | Playground FQDN | `{project}.mnjz.in` |
 | Live staging FQDN | `staging.{domain}` |
 | Live production FQDN | `app.{domain}` |
@@ -187,10 +187,10 @@ Confirm summary before Gate 2.
 
 ```bash
 cd "${MONO_ROOT}"
-gh repo create "monjizeen/${PROJECT}" --private --description "{purpose}" --confirm
+gh repo create "maktabwork/${PROJECT}" --private --description "{purpose}" --confirm
 ```
 
-If exists: `gh repo view monjizeen/${PROJECT}` and continue.
+If exists: `gh repo view maktabwork/${PROJECT}` and continue.
 
 ---
 
@@ -287,7 +287,7 @@ Same rules: purpose-shaped mock/fixture data **and** intentional layout/type/spa
 find . \( -name '.DS_Store' -o -name '._*' \) -delete 2>/dev/null || true
 git add -A
 git commit -m "chore: initial scaffold for ${PROJECT}"
-git remote add origin "git@github.com:monjizeen/${PROJECT}.git" 2>/dev/null || true
+git remote add origin "git@github.com:maktabwork/${PROJECT}.git" 2>/dev/null || true
 git push -u origin main
 ```
 
@@ -306,8 +306,8 @@ git push -u origin main
 **Skip for `native-mobile`** unless also standing up web API.
 
 **Internal tool (`internal-tool`)? Skip the Google client entirely.** Instead:
-1. Add the tool to monjizeen-app `config/tools.php` (`'{project}' => $tool('{project}', '{Name}', 'https://{project}.mnjz.in/api/auth/callback')`), open a PR, merge on green, deploy the app to production.
-2. In the new repo, build sign-in per monjizeen-app `docs/TOOL_SIGN_IN.md` and gate every route and file (nginx `auth_request` for static/Node, middleware for Laravel). Copy radar `server/server.mjs` + `docs/SIGN-IN.md` for Node.
+1. Add the tool to monjizeen `config/tools.php` (`'{project}' => $tool('{project}', '{Name}', 'https://{project}.mnjz.in/api/auth/callback')`), open a PR, merge on green, deploy the app to production.
+2. In the new repo, build sign-in per monjizeen `docs/TOOL_SIGN_IN.md` and gate every route and file (nginx `auth_request` for static/Node, middleware for Laravel). Copy radar `server/server.mjs` + `docs/SIGN-IN.md` for Node.
 3. After Gate 7/8: `curl https://{project}.mnjz.in/` must answer `302` to sign-in, never `200`.
 Nothing for Omar to do on Google.
 
@@ -405,7 +405,7 @@ php artisan test
 
 | Item | Playground | Live | Expo |
 |------|------------|------|------|
-| Repo | `github.com/monjizeen/{PROJECT}` | same | same |
+| Repo | `github.com/maktabwork/{PROJECT}` | same | same |
 | Staging / app URL | `https://{PROJECT}.mnjz.in` | `https://staging.{domain}` | N/A |
 | Production | — (same as above) | `https://app.{domain}` | App store / EAS |
 | Agent notes | `{PROJECT}/AGENTS.md` + row in `shared-assets/docs/REPOS.md` | same | same |

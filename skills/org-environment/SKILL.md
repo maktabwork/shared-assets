@@ -20,7 +20,7 @@ refused.
 
 Read with this skill: `OUR-SETUP-PROMPT.md` (the prompt we use to set up
 an org) and `ORG-AGENT-PROMPT.md` (what the org's own agent gets). App side:
-`monjizeen-app/docs/CLIENT_ENVIRONMENT.md`.
+`monjizeen/docs/CLIENT_ENVIRONMENT.md`.
 
 The app is the live status of every org's work. There is no STATUS.md for
 the org's agent any more: their agent works through our MCP instead.

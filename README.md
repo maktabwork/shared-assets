@@ -13,7 +13,7 @@ this one repo so a rename or change lands in one place:
 | Adwar (أدوار) | [`roles/`](roles/) | One agent per role: mission, duties, boundaries, which skills it uses, decision rules |
 | Masarat (مسارات) | [`workflows/`](workflows/) | How roles work together: who starts, who hands off to whom, where Omar approves |
 
-Rules and quality checks every task gets stay in `monjizeen/monjizeen-core`.
+Rules and quality checks every task gets stay in `maktabwork/monjizeen-core`.
 A layer moves to its own repo only if different people own it, someone outside
 needs it on its own, or it changes at a very different pace.
 
@@ -25,7 +25,7 @@ skills.
 
 ```
 packages/
-  design-system/     # redirect — canonical package in github.com/monjizeen/asaas
+  design-system/     # redirect — canonical package in github.com/maktabwork/asaas
 actions/
   setup-flutter/     # Install Flutter SDK + pub get
   setup-laravel/     # Install PHP + Composer + prepare .env
@@ -59,7 +59,7 @@ scripts/
 ```yaml
 jobs:
   test:
-    uses: monjizeen/shared-assets/.github/workflows/flutter-test.yml@main
+    uses: maktabwork/shared-assets/.github/workflows/flutter-test.yml@main
     secrets: inherit
 
   deploy:
@@ -72,7 +72,7 @@ jobs:
 ```yaml
 jobs:
   test:
-    uses: monjizeen/shared-assets/.github/workflows/laravel-test.yml@main
+    uses: maktabwork/shared-assets/.github/workflows/laravel-test.yml@main
     with:
       node-required: true  # if project has frontend assets
     secrets: inherit
@@ -85,13 +85,13 @@ Use this when migrations have MySQL-specific syntax (raw SQL, composite keys, et
 ```yaml
 jobs:
   test:
-    uses: monjizeen/shared-assets/.github/workflows/laravel-test-mysql.yml@main
+    uses: maktabwork/shared-assets/.github/workflows/laravel-test-mysql.yml@main
     secrets: inherit
 
   deploy-staging:
     needs: test
     steps:
-      - uses: monjizeen/shared-assets/actions/deploy-laravel@main
+      - uses: maktabwork/shared-assets/actions/deploy-laravel@main
         with:
           host: 187.77.109.160
           username: www-data
@@ -107,9 +107,9 @@ jobs:
 
 ## Design system
 
-**`@asaas/design-system`** lives in the [**enjaz**](https://github.com/monjizeen/asaas) repo. Live gallery: https://enjaz.mnjz.in
+**`@asaas/design-system`** lives in the [**enjaz**](https://github.com/maktabwork/asaas) repo. Live gallery: https://enjaz.mnjz.in
 
-Pattern docs: [asaas/packages/design-system/docs/INDEX.md](https://github.com/monjizeen/asaas/blob/main/packages/design-system/docs/INDEX.md)
+Pattern docs: [asaas/packages/design-system/docs/INDEX.md](https://github.com/maktabwork/asaas/blob/main/packages/design-system/docs/INDEX.md)
 
 Sync from monjizeen: `cd asaas/packages/design-system && npm run sync`
 
@@ -118,5 +118,5 @@ Sync from monjizeen: `cd asaas/packages/design-system && npm run sync`
 The plugin for account managers and reviewers (`mo@monjizeen`: client-work
 skills plus the Monjizeen connector) is built from `plugin/` and the skills in
 `plugin/skills.txt` by `scripts/build-plugin.sh`, and published to the private
-repo `monjizeen/plugins` by `.github/workflows/publish-plugin.yml`. Account
+repo `maktabwork/plugins` by `.github/workflows/publish-plugin.yml`. Account
 managers read only that repo. Setup: [docs/CLAUDE-CODE-PLUGIN.md](docs/CLAUDE-CODE-PLUGIN.md).

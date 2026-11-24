@@ -5,7 +5,7 @@
 Gate 0 runs `scripts/init-project/bootstrap-mac.sh` automatically. On a **new Mac**, you only need:
 
 ```bash
-git clone git@github.com:monjizeen/shared-assets.git ~/Documents/work/projects/monjizeen/shared-assets
+git clone git@github.com:maktabwork/shared-assets.git ~/Documents/work/projects/monjizeen/shared-assets
 ~/Documents/work/projects/monjizeen/shared-assets/scripts/init-project/bootstrap-mac.sh
 gh auth login   # if bootstrap reports gh not authenticated
 ```
@@ -43,7 +43,7 @@ ln -sf ~/Documents/work/projects/monjizeen/shared-assets/skills/init-project \
 ### VPS: clone shared-assets (once)
 
 ```bash
-ssh vps 'git clone git@github.com:monjizeen/shared-assets.git /srv/projects/shared-assets 2>/dev/null || (cd /srv/projects/shared-assets && git pull)'
+ssh vps 'git clone git@github.com:maktabwork/shared-assets.git /srv/projects/shared-assets 2>/dev/null || (cd /srv/projects/shared-assets && git pull)'
 ```
 
 Gate 7 rsyncs latest scripts on every run; git pull keeps VPS copy current after merges.
@@ -97,7 +97,7 @@ Org standard: **`@asaas/design-system`** in the **`asaas`** repo (`packages/desi
 
 **Install in app:** `"@asaas/design-system": "file:../asaas/packages/design-system"` (mono root).
 
-**External / GitHub:** `"@asaas/design-system": "github:monjizeen/asaas#main:packages/design-system"`
+**External / GitHub:** `"@asaas/design-system": "github:maktabwork/asaas#main:packages/design-system"`
 
 **Maintainer sync** from monjizeen reference:
 
@@ -310,7 +310,7 @@ Deploy jobs use `runs-on: self-hosted`. **Each web repo needs its own online run
 | Script | `shared-assets/scripts/init-project/register-vps-runner.sh` |
 | VPS path | `/srv/github-actions-runner-{PROJECT}` |
 | Runner name | `{hostname}-{PROJECT}` (e.g. `srv1480672-radsgh`) |
-| GitHub | Registered to `monjizeen/{PROJECT}` only |
+| GitHub | Registered to `maktabwork/{PROJECT}` only |
 
 **Never** copy/rsync another app’s runner directory (credentials + systemd collide). Fresh download only (`--force` to reconfigure).
 
@@ -335,7 +335,7 @@ on:
 
 jobs:
   test:
-    uses: monjizeen/shared-assets/.github/workflows/laravel-test.yml@main
+    uses: maktabwork/shared-assets/.github/workflows/laravel-test.yml@main
     with:
       node-required: true
     secrets: inherit
@@ -348,7 +348,7 @@ jobs:
       (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_target == 'staging')
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: monjizeen/shared-assets/actions/deploy-laravel@main
+      - uses: maktabwork/shared-assets/actions/deploy-laravel@main
         with:
           host: 127.0.0.1
           username: www-data
@@ -366,7 +366,7 @@ jobs:
             npm run build
       - name: Notify Telegram - Deployed
         if: success()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -374,7 +374,7 @@ jobs:
           title: "Deployed to Staging"
       - name: Notify Telegram - Deploy Failed
         if: failure()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -404,7 +404,7 @@ on:
 
 jobs:
   test:
-    uses: monjizeen/shared-assets/.github/workflows/laravel-test.yml@main
+    uses: maktabwork/shared-assets/.github/workflows/laravel-test.yml@main
     with:
       node-required: true
     secrets: inherit
@@ -417,7 +417,7 @@ jobs:
       (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_target == 'staging')
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: monjizeen/shared-assets/actions/deploy-laravel@main
+      - uses: maktabwork/shared-assets/actions/deploy-laravel@main
         with:
           host: 127.0.0.1
           username: www-data
@@ -435,7 +435,7 @@ jobs:
             npm run build
       - name: Notify Telegram - Deployed
         if: success()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -443,7 +443,7 @@ jobs:
           title: "Deployed to Staging"
       - name: Notify Telegram - Deploy Failed
         if: failure()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -456,7 +456,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_target == 'production'
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: monjizeen/shared-assets/actions/deploy-laravel@main
+      - uses: maktabwork/shared-assets/actions/deploy-laravel@main
         with:
           host: 127.0.0.1
           username: www-data
@@ -474,7 +474,7 @@ jobs:
             npm run build
       - name: Notify Telegram - Deployed
         if: success()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -482,7 +482,7 @@ jobs:
           title: "Deployed to Production"
       - name: Notify Telegram - Deploy Failed
         if: failure()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -490,7 +490,7 @@ jobs:
           title: "Production Deploy Failed"
 ```
 
-If the app uses `@asaas/design-system`, prefer vendoring at `packages/design-system` (`file:./packages/design-system`) so CI does not need cross-repo checkout of the private `asaas` repo. Optional: `asaas-design-system: true` on the test job when org Actions can read `monjizeen/asaas`.
+If the app uses `@asaas/design-system`, prefer vendoring at `packages/design-system` (`file:./packages/design-system`) so CI does not need cross-repo checkout of the private `asaas` repo. Optional: `asaas-design-system: true` on the test job when org Actions can read `maktabwork/asaas`.
 
 ### Secrets every deploying repo needs
 
@@ -521,7 +521,7 @@ jobs:
     runs-on: self-hosted
     timeout-minutes: 10
     steps:
-      - uses: monjizeen/shared-assets/actions/deploy-service@main
+      - uses: maktabwork/shared-assets/actions/deploy-service@main
         with:
           app-dir: /srv/projects/{PROJECT}
           service: {SERVICE}
@@ -529,7 +529,7 @@ jobs:
             npm ci --omit=dev
       - name: Notify Telegram - Deployed
         if: success()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -537,7 +537,7 @@ jobs:
           title: "{PROJECT} deployed"
       - name: Notify Telegram - Deploy Failed
         if: failure()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -549,10 +549,10 @@ The runner user needs passwordless sudo for: running commands as `www-data` (ski
 
 ### Runner setup from a cloud Claude thread (no SSH)
 
-Cloud threads cannot SSH to the VPS, so `register-vps-runner.sh` only works from the Mac. From a cloud thread, give Omar this to paste into Claude Code on the VPS (he gets the token at `https://github.com/monjizeen/{PROJECT}/settings/actions/runners/new`):
+Cloud threads cannot SSH to the VPS, so `register-vps-runner.sh` only works from the Mac. From a cloud thread, give Omar this to paste into Claude Code on the VPS (he gets the token at `https://github.com/maktabwork/{PROJECT}/settings/actions/runners/new`):
 
 ```text
-Install a GitHub Actions self-hosted runner for monjizeen/{PROJECT} on this
+Install a GitHub Actions self-hosted runner for maktabwork/{PROJECT} on this
 server, the same way as the existing ones (systemctl list-units
 'actions.runner.*'): fresh download into /srv/github-actions-runner-{PROJECT}
 (never copy another runner's folder), name <hostname>-{PROJECT}, same OS user

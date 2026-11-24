@@ -17,7 +17,7 @@ service its package includes; our achiever does it, QA checks it, we
 deliver; the client approves it or asks for changes. We are not their ticket system, and we never ask them for
 dailies, work logs or status updates.
 
-App side: `monjizeen-app/docs/CLIENT_ENVIRONMENT.md` ("Their own agent").
+App side: `monjizeen/docs/CLIENT_ENVIRONMENT.md` ("Their own agent").
 
 ## Connect
 
@@ -62,7 +62,7 @@ asked again.
 ## Test flights (internal)
 
 Before a service skill is marked ready (`config/agent_services.php` in
-monjizeen-app), fly it on our own work:
+monjizeen), fly it on our own work:
 
 1. Make a test request in an internal org (one of ours, never a client's),
    with a realistic brief.

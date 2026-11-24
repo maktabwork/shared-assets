@@ -19,7 +19,7 @@ on:
 
 jobs:
   test:
-    uses: monjizeen/shared-assets/.github/workflows/laravel-test.yml@main
+    uses: maktabwork/shared-assets/.github/workflows/laravel-test.yml@main
     with:
       node-required: true
     secrets: inherit
@@ -32,7 +32,7 @@ jobs:
       (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_target == 'staging')
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: monjizeen/shared-assets/actions/deploy-laravel@main
+      - uses: maktabwork/shared-assets/actions/deploy-laravel@main
         with:
           host: 127.0.0.1
           username: www-data
@@ -50,7 +50,7 @@ jobs:
             npm run build
       - name: Notify Telegram - Deployed
         if: success()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -58,7 +58,7 @@ jobs:
           title: "Deployed to Staging"
       - name: Notify Telegram - Deploy Failed
         if: failure()
-        uses: monjizeen/shared-assets/actions/telegram-notify@main
+        uses: maktabwork/shared-assets/actions/telegram-notify@main
         with:
           bot-token: ${{ secrets.TELEGRAM_NOTIFIER_TOKEN }}
           channel-id: ${{ secrets.TELEGRAM_CHANNEL_ID }}

@@ -19,7 +19,7 @@ Two outputs, kept separate:
 
 | Output | Level | When | Lives in |
 |---|---|---|---|
-| **Client kit** | Organization (and project, if a project differs) | Once at onboarding, then updated after every task | monjizeen-app org / project docs |
+| **Client kit** | Organization (and project, if a project differs) | Once at onboarding, then updated after every task | monjizeen org / project docs |
 | **Task brief** | Ticket | Before each task | The ticket description, or handed straight to the service skill |
 
 Both use the item syntax monjizeen-core reads, so they plug into
@@ -49,7 +49,7 @@ person can confirm it.
    - What the client sent: brand guide, logo files, past work, briefs.
    - Their website and social accounts (bio, last 12 posts, pinned posts).
    - Their app or store listing, if they have one.
-   - Any notes already in monjizeen-app for this org or project.
+   - Any notes already in monjizeen for this org or project.
 2. **Fill [TEMPLATE.md](TEMPLATE.md)** from that material. Copy exact colour
    codes, font names and wording; don't paraphrase their own words.
 3. **List the gaps.** Turn every `Unknown` into one plain question. Ask them in
@@ -60,7 +60,7 @@ person can confirm it.
    they always look for ("the logo is never on a busy photo", "phone number on
    every post"). If they gave none, leave the section with one line:
    `Unknown, ask: what do you always check before you approve?`
-5. **Save it** as the org's "Client kit" doc in monjizeen-app (or as
+5. **Save it** as the org's "Client kit" doc in monjizeen (or as
    `client-kit.md` if the app isn't in use). A project that differs from the org
    (a sub-brand, a different audience) gets its own short doc with only the
    differences.

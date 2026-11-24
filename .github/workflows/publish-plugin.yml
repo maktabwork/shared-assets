@@ -1,8 +1,8 @@
 # Publishes the Claude Code plugin (mo@monjizeen) to the private
-# monjizeen/plugins repo whenever its parts change on main. Account managers read
+# maktabwork/plugins repo whenever its parts change on main. Account managers read
 # only that repo. Pushes over SSH with a deploy key: the secret
 # PLUGINS_DEPLOY_KEY holds the private key of a write deploy key on
-# monjizeen/plugins (nothing else).
+# maktabwork/plugins (nothing else).
 name: Publish plugin
 
 on:
@@ -29,7 +29,7 @@ jobs:
     env:
       HAS_KEY: ${{ secrets.PLUGINS_DEPLOY_KEY != '' }}
     steps:
-      - name: Skip until monjizeen/plugins is set up
+      - name: Skip until maktabwork/plugins is set up
         if: env.HAS_KEY != 'true'
         run: echo "::notice::PLUGINS_DEPLOY_KEY is not set yet, so the plugin was not published. See docs/CLAUDE-CODE-PLUGIN.md."
 
@@ -37,8 +37,8 @@ jobs:
         if: env.HAS_KEY == 'true'
 
       # Plain git over SSH, not actions/checkout: checkout cannot clone an
-      # empty repo, which monjizeen/plugins is before its first publish.
-      - name: Clone monjizeen/plugins with the deploy key
+      # empty repo, which maktabwork/plugins is before its first publish.
+      - name: Clone maktabwork/plugins with the deploy key
         if: env.HAS_KEY == 'true'
         env:
           DEPLOY_KEY: ${{ secrets.PLUGINS_DEPLOY_KEY }}
@@ -48,7 +48,7 @@ jobs:
           chmod 600 ~/.ssh/plugins_deploy_key
           ssh-keyscan -t ed25519,rsa github.com >> ~/.ssh/known_hosts 2>/dev/null
           export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/plugins_deploy_key -o IdentitiesOnly=yes"
-          git clone git@github.com:monjizeen/plugins.git plugins-repo
+          git clone git@github.com:maktabwork/plugins.git plugins-repo
           git -C plugins-repo config core.sshCommand "$GIT_SSH_COMMAND"
 
       - name: Build the plugin

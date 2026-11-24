@@ -12,7 +12,7 @@
 # Never copies another runner dir (that broke enjaz once) — always fresh download.
 #
 # Env (optional):
-#   GH_ORG          default monjizeen
+#   GH_ORG          default maktabwork
 #   VPS_SSH_HOST    default vps (or from ~/.cursor/secrets/monjizeen.env)
 #   VPS_SSH_USER    default root
 
@@ -24,7 +24,7 @@ if [[ "${2:-}" == "--force" ]]; then
   FORCE=1
 fi
 
-GH_ORG="${GH_ORG:-monjizeen}"
+GH_ORG="${GH_ORG:-maktabwork}"
 REPO="${GH_ORG}/${PROJECT}"
 ORG_SECRETS="${HOME}/.cursor/secrets/monjizeen.env"
 
